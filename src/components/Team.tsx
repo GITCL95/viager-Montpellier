@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { team } from "@/lib/site-data";
 import { Icon } from "./Icon";
 
@@ -25,14 +24,10 @@ export function Team() {
               key={member.name}
               className="group overflow-hidden rounded-3xl bg-white ring-1 ring-border transition-shadow hover:shadow-lg"
             >
-              <div className="relative aspect-[4/5] w-full overflow-hidden">
-                <Image
-                  src={member.image}
-                  alt={member.name}
-                  fill
-                  sizes="260px"
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
-                />
+              <div className="flex aspect-[4/5] w-full items-center justify-center bg-gradient-to-br from-secondary via-cardinal to-primary">
+                <span className="flex h-20 w-20 items-center justify-center rounded-full bg-white/10 text-white ring-1 ring-white/20 transition-transform duration-300 group-hover:scale-105">
+                  <Icon name={member.icon} className="h-9 w-9" />
+                </span>
               </div>
               <div className="p-5 text-center">
                 <h3 className="text-base font-bold text-secondary">
