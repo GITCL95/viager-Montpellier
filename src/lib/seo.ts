@@ -1,4 +1,4 @@
-export const SITE_URL = "https://www.viager-montpellier.fr";
+export const SITE_URL = "https://viager-montpellier.fr";
 
 export const agency = {
   name: "Viager Montpellier by Patrimoine Cardinal",
