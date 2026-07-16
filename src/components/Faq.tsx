@@ -14,8 +14,8 @@ export function Faq() {
         <div className="relative order-2 mx-auto hidden w-full max-w-md lg:order-1 lg:block lg:max-w-none">
           <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2rem]">
             <Image
-              src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=900&q=80"
-              alt="Couple de propriétaires souriant devant leur maison"
+              src="https://images.unsplash.com/photo-1758686253677-d3af6c15186e?auto=format&fit=crop&w=900&q=80"
+              alt="Couple de seniors souriant, propriétaires de leur maison à Montpellier"
               fill
               sizes="480px"
               className="object-cover"
