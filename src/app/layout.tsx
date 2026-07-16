@@ -19,6 +19,9 @@ export const metadata: Metadata = {
   description:
     "Agence spécialisée en viager à Montpellier. Estimation gratuite, accompagnement juridique et notarial pour vendre ou acheter votre bien en viager en toute confiance.",
   alternates: { canonical: "/" },
+  verification: {
+    google: "EQC7SCVvE7ks_jvdgxmxsNOComk7OyOY2VRS7bv7vdw",
+  },
 };
 
 export default function RootLayout({
