@@ -1,9 +1,9 @@
 export const nav = [
-  { label: "Accueil", href: "/#accueil" },
-  { label: "Le viager", href: "/#a-propos" },
-  { label: "Nos biens", href: "/#biens" },
-  { label: "Notre équipe", href: "/#equipe" },
-  { label: "FAQ", href: "/#faq" },
+  { label: "Accueil", href: "/" },
+  { label: "Le viager", href: "/le-viager" },
+  { label: "Nos biens", href: "/nos-biens" },
+  { label: "Notre équipe", href: "/notre-equipe" },
+  { label: "FAQ", href: "/faq" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -112,21 +112,25 @@ export const team = [
     name: "Sophie Delcourt",
     role: "Fondatrice & Directrice",
     image: "https://i.pravatar.cc/300?img=32",
+    bio: "15 ans d'expérience en transaction immobilière à Montpellier. Sophie supervise chaque dossier de vente en viager, de l'estimation jusqu'à la signature notariée.",
   },
   {
     name: "Marc Andrieu",
     role: "Conseiller viager senior",
     image: "https://i.pravatar.cc/300?img=12",
+    bio: "Spécialiste du viager occupé, Marc accompagne les vendeurs seniors avec pédagogie : il prend le temps d'expliquer chaque étape et répond à toutes les questions.",
   },
   {
     name: "Claire Fontanel",
     role: "Juriste spécialisée",
     image: "https://i.pravatar.cc/300?img=45",
+    bio: "Claire sécurise juridiquement chaque transaction : clause résolutoire, indexation de la rente, droit d'usage et d'habitation, en lien avec les notaires partenaires.",
   },
   {
     name: "Julien Roques",
     role: "Négociateur immobilier",
     image: "https://i.pravatar.cc/300?img=5",
+    bio: "Julien connaît chaque quartier de Montpellier et de sa métropole. Il négocie bouquet et rente au plus juste, dans l'intérêt du vendeur comme de l'acheteur.",
   },
 ];
 

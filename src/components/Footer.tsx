@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { nav, sectorLinks } from "@/lib/site-data";
 import { Icon } from "./Icon";
 import { Logo } from "./Logo";
@@ -35,9 +36,9 @@ export function Footer() {
           <ul className="mt-4 space-y-3 text-sm">
             {nav.map((item) => (
               <li key={item.href}>
-                <a href={item.href} className="transition-colors hover:text-primary">
+                <Link href={item.href} className="transition-colors hover:text-primary">
                   {item.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -50,9 +51,9 @@ export function Footer() {
           <ul className="mt-4 space-y-3 text-sm">
             {sectorLinks.map((item) => (
               <li key={item.href}>
-                <a href={item.href} className="transition-colors hover:text-primary">
+                <Link href={item.href} className="transition-colors hover:text-primary">
                   {item.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

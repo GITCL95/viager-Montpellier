@@ -38,13 +38,13 @@ export function Header() {
 
         <nav className="hidden items-center gap-8 lg:flex">
           {navStart.map((item) => (
-            <a
+            <Link
               key={item.href}
               href={item.href}
               className="text-[15px] font-medium text-secondary/80 transition-colors hover:text-primary"
             >
               {item.label}
-            </a>
+            </Link>
           ))}
 
           <div ref={sectorsRef} className="relative">
@@ -80,13 +80,13 @@ export function Header() {
           </div>
 
           {navEnd.map((item) => (
-            <a
+            <Link
               key={item.href}
               href={item.href}
               className="text-[15px] font-medium text-secondary/80 transition-colors hover:text-primary"
             >
               {item.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -122,14 +122,14 @@ export function Header() {
         <div className="border-t border-border bg-white px-6 py-4 lg:hidden">
           <nav className="flex flex-col gap-4">
             {nav.map((item) => (
-              <a
+              <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
                 className="text-[15px] font-medium text-secondary/80 hover:text-primary"
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
 
             <div className="border-t border-border pt-4">
