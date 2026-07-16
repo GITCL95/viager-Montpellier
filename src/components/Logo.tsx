@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Icon } from "./Icon";
 
 export function Logo({
@@ -12,7 +13,7 @@ export function Logo({
   const iconSize = size === "lg" ? "h-6 w-6" : "h-5 w-5";
 
   return (
-    <a href="#accueil" className="group flex items-center gap-3">
+    <Link href="/" className="group flex items-center gap-3">
       <span
         className={`relative flex ${badgeSize} shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-secondary via-cardinal to-primary text-white shadow-md shadow-cardinal/20 ring-1 ring-white/10 transition-transform duration-300 group-hover:rotate-3`}
       >
@@ -39,6 +40,6 @@ export function Logo({
           </span>
         </span>
       </span>
-    </a>
+    </Link>
   );
 }

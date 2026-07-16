@@ -1,4 +1,4 @@
-import { nav } from "@/lib/site-data";
+import { nav, sectorLinks } from "@/lib/site-data";
 import { Icon } from "./Icon";
 import { Logo } from "./Logo";
 
@@ -48,10 +48,13 @@ export function Footer() {
             Nos services
           </h3>
           <ul className="mt-4 space-y-3 text-sm">
-            <li>Vente en viager</li>
-            <li>Achat en viager</li>
-            <li>Estimation gratuite</li>
-            <li>Simulation de rente</li>
+            {sectorLinks.map((item) => (
+              <li key={item.href}>
+                <a href={item.href} className="transition-colors hover:text-primary">
+                  {item.label}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
 

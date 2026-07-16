@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { SITE_URL } from "@/lib/seo";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -9,9 +10,15 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Viager Montpellier by Patrimoine Cardinal | Vendre ou acheter un bien en viager",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default:
+      "Viager Montpellier by Patrimoine Cardinal | Vendre ou acheter un bien en viager",
+    template: "%s",
+  },
   description:
     "Agence spécialisée en viager à Montpellier. Estimation gratuite, accompagnement juridique et notarial pour vendre ou acheter votre bien en viager en toute confiance.",
+  alternates: { canonical: "/" },
 };
 
 export default function RootLayout({

@@ -1,10 +1,25 @@
 export const nav = [
-  { label: "Accueil", href: "#accueil" },
-  { label: "Le viager", href: "#a-propos" },
-  { label: "Nos biens", href: "#biens" },
-  { label: "Notre équipe", href: "#equipe" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Contact", href: "#contact" },
+  { label: "Accueil", href: "/#accueil" },
+  { label: "Le viager", href: "/#a-propos" },
+  { label: "Nos biens", href: "/#biens" },
+  { label: "Notre équipe", href: "/#equipe" },
+  { label: "FAQ", href: "/#faq" },
+  { label: "Contact", href: "/#contact" },
+];
+
+export const sectorLinks = [
+  {
+    label: "Viager libre Montpellier",
+    href: "/viager-libre-montpellier",
+  },
+  {
+    label: "Viager occupé Montpellier",
+    href: "/viager-occupe-montpellier",
+  },
+  { label: "Viager Hérault", href: "/viager-herault" },
+  { label: "Viager Sète", href: "/viager-sete" },
+  { label: "Viager Nîmes", href: "/viager-nimes" },
+  { label: "Viager Béziers", href: "/viager-beziers" },
 ];
 
 export const heroStats = [
