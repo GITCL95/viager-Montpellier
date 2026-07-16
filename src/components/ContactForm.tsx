@@ -1,14 +1,42 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 import { Icon } from "./Icon";
 
 const projectOptions = ["Vendre en viager", "Acheter en viager", "Simple question"];
+const FORM_ENDPOINT = "https://formspree.io/f/xgogavvr";
+
+type Status = "idle" | "loading" | "success" | "error";
 
 export function ContactForm() {
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<Status>("idle");
 
-  if (submitted) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setStatus("loading");
+
+    const form = event.currentTarget;
+    const data = new FormData(form);
+
+    try {
+      const response = await fetch(FORM_ENDPOINT, {
+        method: "POST",
+        body: data,
+        headers: { Accept: "application/json" },
+      });
+
+      if (response.ok) {
+        setStatus("success");
+        form.reset();
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
+  }
+
+  if (status === "success") {
     return (
       <div className="rounded-3xl bg-white p-8 text-center ring-1 ring-border sm:p-10">
         <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary">
@@ -28,12 +56,11 @@ export function ContactForm() {
 
   return (
     <form
-      onSubmit={(event) => {
-        event.preventDefault();
-        setSubmitted(true);
-      }}
+      onSubmit={handleSubmit}
       className="grid gap-5 rounded-3xl bg-white p-8 ring-1 ring-border sm:p-10"
     >
+      <input type="hidden" name="_subject" value="Nouvelle demande — Viager Montpellier" />
+
       <div className="grid gap-5 sm:grid-cols-2">
         <label className="flex flex-col gap-2 text-sm font-semibold text-secondary">
           Nom complet
@@ -100,11 +127,19 @@ export function ContactForm() {
         />
       </label>
 
+      {status === "error" && (
+        <p className="rounded-xl bg-red-50 px-4 py-3 text-sm text-red-600">
+          Une erreur est survenue lors de l&apos;envoi. Merci de réessayer ou
+          de nous appeler directement au 04 67 00 00 00.
+        </p>
+      )}
+
       <button
         type="submit"
-        className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-primary-dark"
+        disabled={status === "loading"}
+        className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-primary-dark disabled:cursor-not-allowed disabled:opacity-70"
       >
-        Envoyer ma demande
+        {status === "loading" ? "Envoi en cours..." : "Envoyer ma demande"}
         <Icon name="arrowRight" className="h-4 w-4" />
       </button>
 
