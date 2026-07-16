@@ -6,10 +6,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const routes = [
     { path: "/", priority: 1 },
-    { path: "/le-viager", priority: 0.9 },
-    { path: "/nos-biens", priority: 0.9 },
-    { path: "/notre-equipe", priority: 0.7 },
-    { path: "/faq", priority: 0.8 },
     { path: "/contact", priority: 0.9 },
     { path: "/viager-libre-montpellier", priority: 0.9 },
     { path: "/viager-occupe-montpellier", priority: 0.9 },

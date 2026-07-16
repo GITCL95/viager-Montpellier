@@ -1,9 +1,5 @@
 export const nav = [
   { label: "Accueil", href: "/" },
-  { label: "Le viager", href: "/le-viager" },
-  { label: "Nos biens", href: "/nos-biens" },
-  { label: "Notre équipe", href: "/notre-equipe" },
-  { label: "FAQ", href: "/faq" },
   { label: "Contact", href: "/contact" },
 ];
 
