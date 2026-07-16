@@ -274,7 +274,7 @@ export default function ViagerHeraultPage() {
           title="Un bien dans l'Hérault ? Parlons-en."
           description="Où que vous soyez dans le département, un conseiller local étudie votre projet et vous propose une estimation gratuite de votre bien."
           primaryLabel="estimation gratuite de votre bien"
-          primaryHref="/#contact"
+          primaryHref="/contact"
         />
       </main>
 

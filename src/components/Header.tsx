@@ -101,7 +101,7 @@ export function Header() {
             04 67 00 00 00
           </a>
           <Link
-            href="/#contact"
+            href="/contact"
             className="rounded-full bg-primary px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-primary-dark"
           >
             Estimation gratuite
@@ -151,7 +151,7 @@ export function Header() {
             </div>
 
             <Link
-              href="/#contact"
+              href="/contact"
               onClick={() => setOpen(false)}
               className="mt-2 rounded-full bg-primary px-6 py-3 text-center text-sm font-semibold text-white"
             >

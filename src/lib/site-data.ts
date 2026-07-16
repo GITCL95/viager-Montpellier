@@ -4,7 +4,7 @@ export const nav = [
   { label: "Nos biens", href: "/#biens" },
   { label: "Notre équipe", href: "/#equipe" },
   { label: "FAQ", href: "/#faq" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export const sectorLinks = [

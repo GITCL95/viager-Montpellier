@@ -66,7 +66,7 @@ export function About() {
           </ul>
 
           <a
-            href="#contact"
+            href="/contact"
             className="mt-9 inline-flex items-center gap-2 rounded-full bg-secondary px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-secondary/90"
           >
             Contacter notre équipe

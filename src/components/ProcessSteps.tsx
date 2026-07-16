@@ -1,9 +1,9 @@
-import { Icon } from "./Icon";
+import { Icon, type IconName } from "./Icon";
 
 type Step = {
   title: string;
   description: string;
-  icon: "search" | "calculator" | "key";
+  icon: IconName;
 };
 
 export function ProcessSteps({ steps }: { steps: Step[] }) {

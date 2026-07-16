@@ -8,7 +8,7 @@ export function Footer() {
   return (
     <footer className="bg-[#0a1e28] pt-16 text-white/70">
       <div className="mx-auto grid max-w-7xl gap-10 px-6 pb-12 sm:grid-cols-2 lg:grid-cols-4 lg:px-10">
-        <div>
+        <div className="sm:col-span-2 lg:col-span-1">
           <Logo variant="onDark" size="lg" />
           <p className="mt-5 text-sm leading-relaxed">
             Votre agence de confiance pour vendre ou acheter un bien en

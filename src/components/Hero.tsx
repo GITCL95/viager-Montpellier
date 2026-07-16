@@ -31,7 +31,7 @@ export function Hero() {
 
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <a
-              href="#contact"
+              href="/contact"
               className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-primary/30 transition-colors hover:bg-primary-dark"
             >
               Estimation gratuite

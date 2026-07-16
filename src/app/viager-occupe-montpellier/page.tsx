@@ -286,7 +286,7 @@ export default function ViagerOccupeMontpellierPage() {
           title="Envie de connaître le montant de votre bouquet et de votre rente ?"
           description="Nos conseillers réalisent une estimation gratuite de votre bien et vous répondent sous 48 h, en toute confidentialité."
           primaryLabel="estimation gratuite de votre bien"
-          primaryHref="/#contact"
+          primaryHref="/contact"
         />
       </main>
 

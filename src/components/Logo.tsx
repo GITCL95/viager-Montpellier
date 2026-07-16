@@ -21,13 +21,14 @@ export function Logo({
         <span className="absolute -bottom-1 -right-1 h-3 w-3 rounded-full bg-primary ring-2 ring-white" />
       </span>
 
-      <span className="flex flex-col leading-none">
+      <span className="flex min-w-0 flex-col leading-none">
         <span
           className={`font-bold uppercase tracking-tight ${
             size === "lg" ? "text-2xl" : "text-lg"
           } ${isDark ? "text-white" : "text-secondary"}`}
         >
-          Viager<span className="text-primary">Montpellier</span>
+          Viager<wbr />
+          <span className="text-primary">Montpellier</span>
         </span>
         <span
           className={`mt-1 flex items-center gap-1.5 text-[10px] font-medium uppercase tracking-[0.18em] ${

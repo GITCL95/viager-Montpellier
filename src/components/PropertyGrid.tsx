@@ -13,7 +13,7 @@ export type PropertyItem = {
 
 export function PropertyGrid({
   items,
-  ctaHref = "/#contact",
+  ctaHref = "/contact",
   ctaLabel = "En savoir plus",
 }: {
   items: PropertyItem[];

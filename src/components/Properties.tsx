@@ -20,7 +20,7 @@ export function Properties() {
             </p>
           </div>
           <a
-            href="#contact"
+            href="/contact"
             className="inline-flex items-center gap-2 rounded-full border border-secondary/20 px-6 py-3 text-sm font-semibold text-secondary transition-colors hover:bg-secondary hover:text-white"
           >
             Voir tous les biens
@@ -59,7 +59,7 @@ export function Properties() {
                   {property.description}
                 </p>
                 <a
-                  href="#contact"
+                  href="/contact"
                   className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-primary"
                 >
                   En savoir plus

@@ -268,7 +268,7 @@ export default function ViagerBeziersPage() {
           title="Un bien à Béziers ? Discutons de votre projet."
           description="Nos conseillers étudient votre situation et vous proposent une estimation gratuite de votre bien sous 48 h."
           primaryLabel="estimation gratuite de votre bien"
-          primaryHref="/#contact"
+          primaryHref="/contact"
         />
       </main>
 

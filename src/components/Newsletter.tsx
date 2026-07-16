@@ -2,7 +2,7 @@ import { Icon } from "./Icon";
 
 export function Newsletter() {
   return (
-    <section id="contact" className="bg-secondary py-16">
+    <section id="newsletter" className="bg-secondary py-16">
       <div className="mx-auto max-w-5xl px-6 lg:px-10">
         <div className="flex flex-col items-center justify-between gap-8 rounded-3xl bg-secondary-dark p-8 sm:p-10 lg:flex-row">
           <div className="text-center lg:text-left">

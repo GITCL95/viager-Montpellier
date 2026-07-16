@@ -280,7 +280,7 @@ export default function ViagerSetePage() {
           title="Un bien à Sète ? Échangeons sur votre projet."
           description="Nos conseillers locaux étudient votre situation et vous proposent une estimation gratuite de votre bien sous 48 h."
           primaryLabel="estimation gratuite de votre bien"
-          primaryHref="/#contact"
+          primaryHref="/contact"
         />
       </main>
 

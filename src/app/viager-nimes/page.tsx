@@ -272,7 +272,7 @@ export default function ViagerNimesPage() {
           title="Un bien à Nîmes ? Parlons de votre projet."
           description="Nos conseillers étudient votre situation et vous proposent une estimation gratuite de votre bien sous 48 h."
           primaryLabel="estimation gratuite de votre bien"
-          primaryHref="/#contact"
+          primaryHref="/contact"
         />
       </main>
 
