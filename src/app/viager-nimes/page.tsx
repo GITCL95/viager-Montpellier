@@ -10,6 +10,7 @@ import { CtaBanner } from "@/components/CtaBanner";
 import { JsonLd } from "@/components/JsonLd";
 import { ProcessSteps } from "@/components/ProcessSteps";
 import { SectorCard } from "@/components/SectorCard";
+import { MiniLeadForm } from "@/components/MiniLeadForm";
 import {
   absoluteUrl,
   breadcrumbJsonLd,
@@ -129,13 +130,20 @@ export default function ViagerNimesPage() {
               </p>
             </div>
 
-            <div className="relative mt-10 aspect-[4/5] w-full overflow-hidden rounded-[2rem] lg:mt-0">
-              <Image
-                src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=900&q=80"
-                alt="Salon cosy d'une maison de caractère à vendre en viager à Nîmes"
-                fill
-                sizes="(min-width: 1024px) 480px, 90vw"
-                className="object-cover"
+            <div className="mt-10 flex flex-col gap-6 lg:mt-0">
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[2rem]">
+                <Image
+                  src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=900&q=80"
+                  alt="Salon cosy d'une maison de caractère à vendre en viager à Nîmes"
+                  fill
+                  sizes="(min-width: 1024px) 480px, 90vw"
+                  className="object-cover"
+                />
+              </div>
+              <MiniLeadForm
+                title="Un projet à Nîmes ?"
+                description="Laissez-nous vos coordonnées, un conseiller local vous recontacte sous 48 h."
+                subject="Demande — Viager Nîmes"
               />
             </div>
           </div>

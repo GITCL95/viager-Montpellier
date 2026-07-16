@@ -8,6 +8,7 @@ import { FaqSection } from "@/components/FaqSection";
 import { CtaBanner } from "@/components/CtaBanner";
 import { JsonLd } from "@/components/JsonLd";
 import { Icon } from "@/components/Icon";
+import { MiniLeadForm } from "@/components/MiniLeadForm";
 import Image from "next/image";
 import {
   absoluteUrl,
@@ -93,8 +94,8 @@ export default function ViagerOccupeMontpellierPage() {
         />
 
         <section className="bg-white py-20 lg:py-28">
-          <div className="mx-auto max-w-7xl px-6 lg:px-10">
-            <div className="max-w-3xl">
+          <div className="mx-auto max-w-7xl px-6 lg:grid lg:grid-cols-[1.6fr_1fr] lg:gap-14 lg:px-10">
+            <div>
               <SectionHeading
                 eyebrow="Le principe"
                 title="Comment fonctionne le viager occupé ?"
@@ -130,6 +131,14 @@ export default function ViagerOccupeMontpellierPage() {
                 </a>{" "}
                 sera en revanche plus pertinente.
               </p>
+            </div>
+
+            <div className="mt-10 lg:mt-0">
+              <MiniLeadForm
+                title="Un projet en viager occupé ?"
+                description="Laissez-nous vos coordonnées, un conseiller vous recontacte sous 48 h pour étudier votre projet."
+                subject="Demande — Viager occupé Montpellier"
+              />
             </div>
           </div>
         </section>

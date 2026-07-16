@@ -8,6 +8,7 @@ import { FaqSection } from "@/components/FaqSection";
 import { CtaBanner } from "@/components/CtaBanner";
 import { JsonLd } from "@/components/JsonLd";
 import { PropertyGrid, type PropertyItem } from "@/components/PropertyGrid";
+import { MiniLeadForm } from "@/components/MiniLeadForm";
 import {
   absoluteUrl,
   breadcrumbJsonLd,
@@ -129,8 +130,8 @@ export default function ViagerLibreMontpellierPage() {
         />
 
         <section className="bg-white py-20 lg:py-28">
-          <div className="mx-auto max-w-7xl px-6 lg:px-10">
-            <div className="max-w-3xl">
+          <div className="mx-auto max-w-7xl px-6 lg:grid lg:grid-cols-[1.6fr_1fr] lg:gap-14 lg:px-10">
+            <div>
               <SectionHeading
                 eyebrow="Comprendre le viager libre"
                 title="Qu'est-ce que le viager libre ?"
@@ -162,6 +163,14 @@ export default function ViagerLibreMontpellierPage() {
                 immédiatement, sans attendre le décès du vendeur comme
                 c&apos;est le cas en viager occupé.
               </p>
+            </div>
+
+            <div className="mt-10 lg:mt-0">
+              <MiniLeadForm
+                title="Un projet en viager libre ?"
+                description="Laissez-nous vos coordonnées, un conseiller vous recontacte sous 48 h pour étudier votre projet."
+                subject="Demande — Viager libre Montpellier"
+              />
             </div>
           </div>
         </section>
