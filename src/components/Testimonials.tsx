@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { testimonials } from "@/lib/site-data";
 import { Icon } from "./Icon";
 
@@ -30,14 +29,8 @@ export function Testimonials() {
                 &ldquo;{testimonial.quote}&rdquo;
               </p>
               <div className="mt-6 flex items-center gap-3">
-                <div className="relative h-11 w-11 overflow-hidden rounded-full">
-                  <Image
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    fill
-                    sizes="44px"
-                    className="object-cover"
-                  />
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+                  <Icon name="user" className="h-5 w-5" />
                 </div>
                 <div>
                   <p className="text-sm font-bold text-secondary">
