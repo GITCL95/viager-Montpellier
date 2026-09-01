@@ -67,6 +67,7 @@ export function Hero() {
               fill
               sizes="(min-width: 1024px) 720px, 100vw"
               quality={95}
+              unoptimized
               className="object-cover object-[center_25%]"
               priority
             />
