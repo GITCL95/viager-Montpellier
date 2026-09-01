@@ -1,0 +1,38 @@
+---
+description: Carte du site Viager Montpellier — où modifier quoi
+alwaysApply: true
+---
+
+# Viager Montpellier — guide rapide
+
+Projet Next.js 16 (App Router). Dépôt : `viager-montpellier-web/`. Site live : https://viager-montpellier.fr
+
+## Où modifier quoi (priorité)
+
+| Besoin | Fichier |
+|--------|---------|
+| Téléphone, adresse, nom agence, SEO global | `src/lib/seo.ts` |
+| Menu, biens, équipe, témoignages, FAQ accueil | `src/lib/site-data.ts` |
+| En-tête / pied de page | `src/components/Header.tsx`, `Footer.tsx` |
+| Formulaires contact | `src/components/ContactForm.tsx`, `MiniLeadForm.tsx` |
+| Page d'accueil | `src/app/page.tsx` + composants dans `src/components/` |
+
+## Pages SEO (URL → fichier)
+
+Chaque page = `src/app/<slug>/page.tsx` :
+
+- `/` → `src/app/page.tsx`
+- `/contact` → `src/app/contact/page.tsx`
+- `/viager-libre-montpellier` → `src/app/viager-libre-montpellier/page.tsx`
+- `/viager-occupe-montpellier` → `src/app/viager-occupe-montpellier/page.tsx`
+- `/viager-herault` → `src/app/viager-herault/page.tsx`
+- `/viager-sete` → `src/app/viager-sete/page.tsx`
+- `/viager-nimes` → `src/app/viager-nimes/page.tsx`
+- `/viager-beziers` → `src/app/viager-beziers/page.tsx`
+
+## Comportement attendu de l'agent
+
+- Chercher et lire les fichiers soi-même ; ne pas demander à l'utilisateur de les joindre.
+- Pour un changement global (téléphone, email, adresse), commencer par `src/lib/seo.ts`.
+- Pour le contenu répété sur l'accueil, préférer `src/lib/site-data.ts`.
+- Déploiement : commit sur `master` → push GitHub → Vercel auto-deploy.

@@ -62,11 +62,11 @@ export function Hero() {
         <div className="relative mx-auto w-full max-w-md lg:max-w-none">
           <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2rem] ring-1 ring-white/10">
             <Image
-              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80"
-              alt="Maison à Montpellier proposée en viager"
+              src="/images/hero-home.png"
+              alt="Couple de seniors souriants à Montpellier, accompagnés pour une vente en viager"
               fill
               sizes="(min-width: 1024px) 480px, 90vw"
-              className="object-cover"
+              className="object-cover object-[center_25%]"
               priority
             />
           </div>

@@ -1,0 +1,15 @@
+---
+description: Commit et push GitHub après chaque modification du site
+alwaysApply: true
+---
+
+# Déploiement automatique
+
+Après **chaque** modification du site demandée par l'utilisateur :
+
+1. Commit les fichiers concernés (message en français, style existant : `feat:` / `fix:` / `chore:`).
+2. Push immédiatement sur `origin/master`.
+3. Ne pas attendre que l'utilisateur redemande « push ».
+
+Ne pas committer `_POUR-CLAUDE/` (déjà dans `.gitignore`).
+Ne pas faire de force push.
