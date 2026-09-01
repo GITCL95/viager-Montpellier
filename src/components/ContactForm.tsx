@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { Icon } from "./Icon";
+import { agency } from "@/lib/seo";
 
 const projectOptions = ["Vendre en viager", "Acheter en viager", "Simple question"];
 const FORM_ENDPOINT = "https://formspree.io/f/xgogavvr";
@@ -48,7 +49,7 @@ export function ContactForm() {
         <p className="mt-2 text-sm leading-relaxed text-text">
           Un conseiller vous recontacte sous 48 h ouvrées pour étudier votre
           projet. En cas d&apos;urgence, vous pouvez aussi nous appeler
-          directement au 04 67 00 00 00.
+          directement au {agency.telephoneDisplay}.
         </p>
       </div>
     );
@@ -130,7 +131,7 @@ export function ContactForm() {
       {status === "error" && (
         <p className="rounded-xl bg-red-50 px-4 py-3 text-sm text-red-600">
           Une erreur est survenue lors de l&apos;envoi. Merci de réessayer ou
-          de nous appeler directement au 04 67 00 00 00.
+          de nous appeler directement au {agency.telephoneDisplay}.
         </p>
       )}
 

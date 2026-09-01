@@ -2,7 +2,8 @@ export const SITE_URL = "https://viager-montpellier.fr";
 
 export const agency = {
   name: "Viager Montpellier by Patrimoine Cardinal",
-  telephone: "+33467000000",
+  telephone: "+33483584386",
+  telephoneDisplay: "04 83 58 43 86",
   street: "12 Rue de la République",
   locality: "Montpellier",
   postalCode: "34000",

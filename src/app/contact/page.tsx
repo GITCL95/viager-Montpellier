@@ -103,10 +103,10 @@ export default function ContactPage() {
                         <Icon name="phone" className="h-4 w-4" />
                       </span>
                       <a
-                        href="tel:+33467000000"
+                        href={`tel:${agency.telephone}`}
                         className="font-semibold text-secondary transition-colors hover:text-primary"
                       >
-                        04 67 00 00 00
+                        {agency.telephoneDisplay}
                       </a>
                     </li>
                     <li className="flex items-center gap-3">

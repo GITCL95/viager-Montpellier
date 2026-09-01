@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { Icon } from "./Icon";
+import { agency } from "@/lib/seo";
 
 const FORM_ENDPOINT = "https://formspree.io/f/xgogavvr";
 
@@ -54,7 +55,7 @@ export function MiniLeadForm({
         </h3>
         <p className="mt-2 text-sm leading-relaxed text-text">
           Un conseiller vous recontacte sous 48 h ouvrées. En cas
-          d&apos;urgence, appelez-nous au 04 67 00 00 00.
+          d&apos;urgence, appelez-nous au {agency.telephoneDisplay}.
         </p>
       </div>
     );
@@ -97,7 +98,7 @@ export function MiniLeadForm({
       {status === "error" && (
         <p className="mt-3 text-xs leading-relaxed text-red-600">
           Une erreur est survenue, merci de réessayer ou de nous appeler au
-          04 67 00 00 00.
+          {agency.telephoneDisplay}.
         </p>
       )}
 

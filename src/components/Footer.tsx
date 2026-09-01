@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { nav, sectorLinks } from "@/lib/site-data";
+import { agency } from "@/lib/seo";
 import { Icon } from "./Icon";
 import { Logo } from "./Logo";
 
@@ -70,7 +71,7 @@ export function Footer() {
             </li>
             <li className="flex items-center gap-2">
               <Icon name="phone" className="h-4 w-4 shrink-0 text-primary" />
-              04 67 00 00 00
+              {agency.telephoneDisplay}
             </li>
             <li className="flex items-center gap-2">
               <Icon name="mail" className="h-4 w-4 shrink-0 text-primary" />

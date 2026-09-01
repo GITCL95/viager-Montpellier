@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { nav, sectorLinks } from "@/lib/site-data";
+import { agency } from "@/lib/seo";
 import { Icon } from "./Icon";
 import { Logo } from "./Logo";
 
@@ -92,13 +93,13 @@ export function Header() {
 
         <div className="hidden items-center gap-6 lg:flex">
           <a
-            href="tel:+33467000000"
+            href={`tel:${agency.telephone}`}
             className="flex items-center gap-2 text-sm font-semibold text-secondary"
           >
             <span className="flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 text-primary">
               <Icon name="phone" className="h-4 w-4" />
             </span>
-            04 67 00 00 00
+            {agency.telephoneDisplay}
           </a>
           <Link
             href="/contact"
