@@ -65,7 +65,8 @@ export function Hero() {
               src="/images/hero-home.png"
               alt="Couple de seniors souriants à Montpellier, accompagnés pour une vente en viager"
               fill
-              sizes="(min-width: 1024px) 480px, 90vw"
+              sizes="(min-width: 1024px) 720px, 100vw"
+              quality={95}
               className="object-cover object-[center_25%]"
               priority
             />
