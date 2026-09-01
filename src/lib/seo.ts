@@ -4,6 +4,7 @@ export const agency = {
   name: "Viager Montpellier by Patrimoine Cardinal",
   telephone: "+33483584386",
   telephoneDisplay: "04 83 58 43 86",
+  email: "contact@viager-montpellier.fr",
   street: "12 Rue de la République",
   locality: "Montpellier",
   postalCode: "34000",

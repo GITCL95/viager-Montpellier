@@ -38,7 +38,7 @@ export function WhyChoose() {
             Pourquoi nous choisir
           </span>
           <h2 className="mt-3 text-3xl font-bold text-white sm:text-4xl">
-            Votre partenaire viager nouvelle génération à Montpellier
+            Pourquoi choisir notre agence viager à Montpellier
           </h2>
           <p className="mt-5 leading-relaxed text-white/70">
             Nous réinventons l&apos;accompagnement en viager : plus humain,

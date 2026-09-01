@@ -59,11 +59,15 @@ export function Faq() {
                       <Icon name="chevronDown" className="h-4 w-4" />
                     </span>
                   </button>
-                  {isOpen && (
-                    <div className="px-5 pb-5 text-sm leading-relaxed text-text">
-                      {item.answer}
-                    </div>
-                  )}
+                  <div
+                    className={`overflow-hidden px-5 text-sm leading-relaxed text-text transition-[max-height,opacity] duration-200 ${
+                      isOpen
+                        ? "max-h-[1000px] pb-5 opacity-100"
+                        : "max-h-0 pb-0 opacity-0"
+                    }`}
+                  >
+                    {item.answer}
+                  </div>
                 </div>
               );
             })}

@@ -168,29 +168,44 @@ export const partners = [
 
 export const faqs = [
   {
-    question: "Qu'est-ce que le viager exactement ?",
+    question: "Qu'est-ce que le viager, exactement ?",
     answer:
-      "Le viager est une vente immobilière où l'acheteur (débirentier) verse au vendeur (crédirentier) un capital initial appelé « bouquet », puis une rente périodique jusqu'au décès de ce dernier. C'est une solution qui permet au vendeur de percevoir un revenu complémentaire tout en conservant, dans le cas d'un viager occupé, le droit de vivre dans son logement.",
+      "Le viager est une vente immobilière dont le paiement est étalé. L'acheteur verse un capital de départ, le bouquet, puis une rente mensuelle jusqu'au décès du vendeur. Dans un viager occupé, le vendeur continue de vivre chez lui.",
   },
   {
     question: "Quelle est la différence entre viager libre et viager occupé ?",
     answer:
-      "En viager occupé, le vendeur garde le droit d'habiter le logement ou de le louer jusqu'à son décès. En viager libre, l'acheteur peut occuper ou louer le bien immédiatement après la vente. Le viager occupé est le plus répandu et permet une rente généralement plus élevée pour le vendeur.",
+      "Dans un viager occupé, le vendeur reste dans le logement : le prix baisse d'une décote d'occupation. Dans un viager libre, il part dès la vente et l'acheteur récupère le bien tout de suite, donc sans décote.",
   },
   {
     question: "Comment est calculée la rente viagère ?",
     answer:
-      "La rente est calculée selon la valeur du bien, l'âge et l'espérance de vie du vendeur, ainsi que le montant du bouquet choisi. Plus le bouquet est faible, plus la rente mensuelle est élevée, et inversement. Nos conseillers réalisent une simulation personnalisée et gratuite pour chaque situation.",
+      "Trois éléments entrent en jeu : la valeur du bien, l'âge du vendeur et le mode d'occupation. On retire le bouquet de la valeur, puis on convertit le reste en rente à l'aide de barèmes d'espérance de vie. Plus le vendeur est âgé, plus la rente mensuelle est élevée.",
   },
   {
-    question: "Le vendeur peut-il perdre son bien en cas de non-paiement ?",
+    question: "Combien coûte une estimation ?",
     answer:
-      "Non, la vente en viager est sécurisée par un acte notarié qui inscrit une clause résolutoire et une hypothèque légale au profit du vendeur. En cas de défaut de paiement de la rente, la vente peut être annulée et le bien restitué au vendeur.",
+      "Rien. L'estimation est gratuite et sans engagement, avec une réponse sous 48 heures.",
   },
   {
-    question: "Quels sont les avantages fiscaux du viager ?",
+    question: "Que se passe-t-il si l'acheteur arrête de payer la rente ?",
     answer:
-      "Une partie de la rente viagère est exonérée d'impôt selon l'âge du crédirentier au moment de la vente (jusqu'à 70% d'exonération après 69 ans). Le bouquet, lui, n'est pas imposable. Nous vous conseillons de vous rapprocher d'un notaire pour une analyse adaptée à votre situation.",
+      "L'acte notarié contient une clause résolutoire. Elle annule la vente et vous rend votre bien. Le bouquet et les rentes déjà versés vous restent acquis, à titre d'indemnité.",
+  },
+  {
+    question: "Puis-je vendre en viager si j'ai des enfants ?",
+    answer:
+      "Oui. Vos enfants n'ont pas à donner leur accord, la décision vous appartient. Nous conseillons quand même d'en parler avec eux en amont, et nous acceptons volontiers de les recevoir avec vous.",
+  },
+  {
+    question: "Le viager est-il avantageux fiscalement ?",
+    answer:
+      "La rente n'est imposée que sur une fraction de son montant, et cette fraction diminue avec l'âge du vendeur au moment de la vente. Le bouquet relève du régime des plus-values immobilières, avec exonération pour la résidence principale.",
+  },
+  {
+    question: "Dans quelles communes intervenez-vous ?",
+    answer:
+      "Montpellier et sa métropole, tout l'Hérault et le Gard. Nous nous déplaçons chez vous pour l'estimation.",
   },
 ];
 

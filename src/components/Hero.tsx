@@ -17,16 +17,15 @@ export function Hero() {
           </span>
 
           <h1 className="mt-6 text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-[52px] lg:leading-[1.1]">
-            Vendez votre bien en{" "}
-            <span className="text-primary">viager</span> et sécurisez votre
-            avenir
+            Viager à Montpellier : vendez ou achetez en toute sécurité
           </h1>
 
           <p className="mt-6 max-w-xl text-base leading-relaxed text-white/70">
-            Notre agence accompagne les propriétaires et les investisseurs de
-            Montpellier et sa région à chaque étape d&apos;une vente ou d&apos;un
-            achat en viager : estimation, négociation, suivi juridique et
-            notarial, en toute transparence.
+            Vous voulez vendre votre logement en viager sans quitter Montpellier
+            ? Ou acheter un bien décoté dans la métropole ? Notre agence vous
+            suit du premier rendez-vous jusqu&apos;à la signature chez le
+            notaire. Estimation gratuite, calculs transparents, aucun
+            engagement.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-4">
