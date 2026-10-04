@@ -14,15 +14,27 @@ export function MiniLeadForm({
   subject = "Nouvelle demande rapide — Viager Montpellier",
   context = "callback",
   layout = "card",
+  appearance = "default",
+  submitLabel,
 }: {
   title?: string;
   description?: string;
   subject?: string;
   context?: "callback" | "estimation";
   layout?: "card" | "wide";
+  appearance?: "default" | "hero";
+  submitLabel?: string;
 }) {
   const [status, setStatus] = useState<Status>("idle");
   const isWide = layout === "wide" && context === "callback";
+  const isHero = appearance === "hero" && context === "callback" && !isWide;
+  const HeadingTag = isHero ? "h2" : "h3";
+  const cardInputClass = isHero
+    ? "min-h-[54px] min-w-0 w-full rounded-xl border border-border bg-white px-4 py-3 text-base text-secondary placeholder:text-muted focus:border-primary focus:outline-2 focus:outline-offset-2 focus:outline-primary"
+    : "rounded-xl border border-border bg-white px-4 py-3 text-sm text-secondary placeholder:text-muted focus:border-primary focus:outline-none";
+  const cardLabelClass = isHero
+    ? "grid min-w-0 gap-2 text-sm font-medium text-secondary"
+    : "grid gap-1.5 text-sm font-medium text-secondary";
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -55,17 +67,19 @@ export function MiniLeadForm({
       <div
         role="status"
         className={
-          isWide
-            ? "rounded-3xl bg-white p-6 sm:p-8"
-            : "rounded-3xl bg-bg-gray p-6 ring-1 ring-border sm:p-7"
+          isHero
+            ? "rounded-3xl bg-white p-6 shadow-[0_20px_60px_-25px_rgba(3,26,37,0.5)] sm:p-8"
+            : isWide
+              ? "rounded-3xl bg-white p-6 sm:p-8"
+              : "rounded-3xl bg-bg-gray p-6 ring-1 ring-border sm:p-7"
         }
       >
         <span className="flex h-11 w-11 items-center justify-center rounded-full bg-primary/10 text-primary">
           <Icon name="check" className="h-5 w-5" />
         </span>
-        <h3 className="mt-4 text-base font-bold text-secondary">
+        <HeadingTag className="mt-4 text-base font-bold text-secondary">
           Merci, votre demande est envoyée
-        </h3>
+        </HeadingTag>
         <p className="mt-2 text-sm leading-relaxed text-text">
           Un conseiller vous recontacte sous 48 h ouvrées. En cas
           d&apos;urgence, appelez-nous au {agency.telephoneDisplay}.
@@ -129,7 +143,7 @@ export function MiniLeadForm({
             disabled={status === "loading"}
             className="inline-flex min-h-14 w-full items-center justify-center gap-3 rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary-dark focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary disabled:cursor-not-allowed disabled:opacity-70 motion-reduce:transition-none"
           >
-            {status === "loading" ? "Envoi..." : "Être recontacté"}
+            {status === "loading" ? "Envoi..." : submitLabel ?? "Être recontacté"}
             <Icon name="arrowRight" className="h-5 w-5 shrink-0" />
           </button>
         </div>
@@ -153,46 +167,60 @@ export function MiniLeadForm({
   return (
     <form
       onSubmit={handleSubmit}
-      className="rounded-3xl bg-bg-gray p-6 ring-1 ring-border sm:p-7"
+      className={
+        isHero
+          ? "rounded-3xl bg-white p-6 shadow-[0_20px_60px_-25px_rgba(3,26,37,0.5)] sm:p-8"
+          : "rounded-3xl bg-bg-gray p-6 ring-1 ring-border sm:p-7"
+      }
     >
       <input type="hidden" name="_subject" value={subject} />
       <input type="hidden" name="request_type" value={context} />
 
-      <h3 className="text-base font-bold text-secondary">{title}</h3>
-      <p className="mt-2 text-sm leading-relaxed text-text">{description}</p>
+      <HeadingTag
+        className={
+          isHero
+            ? "text-[28px] font-bold leading-[1.2] tracking-tight text-secondary"
+            : "text-base font-bold text-secondary"
+        }
+      >
+        {title}
+      </HeadingTag>
+      <p className={`${isHero ? "mt-3" : "mt-2"} text-sm leading-relaxed text-text`}>
+        {description}
+      </p>
 
-      <div className="mt-5 grid gap-3">
-        <label className="grid gap-1.5 text-sm font-medium text-secondary">
+      <div className={isHero ? "mt-6 grid gap-4" : "mt-5 grid gap-3"}>
+        <label className={cardLabelClass}>
           Votre nom
           <input
-          required
-          type="text"
-          name="name"
-          autoComplete="name"
-          placeholder="Votre nom"
-          className="rounded-xl border border-border bg-white px-4 py-3 text-sm text-secondary placeholder:text-muted focus:border-primary focus:outline-none"
+            required
+            type="text"
+            name="name"
+            autoComplete="name"
+            placeholder="Votre nom"
+            className={cardInputClass}
           />
         </label>
-        <label className="grid gap-1.5 text-sm font-medium text-secondary">
+        <label className={cardLabelClass}>
           Votre téléphone
           <input
-          required
-          type="tel"
-          name="phone"
-          autoComplete="tel"
-          placeholder="Votre téléphone"
-          className="rounded-xl border border-border bg-white px-4 py-3 text-sm text-secondary placeholder:text-muted focus:border-primary focus:outline-none"
+            required
+            type="tel"
+            name="phone"
+            autoComplete="tel"
+            placeholder="Votre téléphone"
+            className={cardInputClass}
           />
         </label>
-        <label className="grid gap-1.5 text-sm font-medium text-secondary">
+        <label className={cardLabelClass}>
           Votre e-mail
           <input
-          required
-          type="email"
-          name="email"
-          autoComplete="email"
-          placeholder="Votre e-mail"
-          className="rounded-xl border border-border bg-white px-4 py-3 text-sm text-secondary placeholder:text-muted focus:border-primary focus:outline-none"
+            required
+            type="email"
+            name="email"
+            autoComplete="email"
+            placeholder="Votre e-mail"
+            className={cardInputClass}
           />
         </label>
         {context === "estimation" && (
@@ -243,13 +271,24 @@ export function MiniLeadForm({
       <button
         type="submit"
         disabled={status === "loading"}
-        className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary-dark disabled:cursor-not-allowed disabled:opacity-70"
+        className={
+          isHero
+            ? "mt-6 inline-flex min-h-[54px] w-full items-center justify-center gap-3 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary-dark focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary disabled:cursor-not-allowed disabled:opacity-70 motion-reduce:transition-none"
+            : "mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary-dark disabled:cursor-not-allowed disabled:opacity-70"
+        }
       >
-        {status === "loading" ? "Envoi..." : context === "estimation" ? "Demander mon estimation" : "Être recontacté"}
-        <Icon name="arrowRight" className="h-4 w-4" />
+        {status === "loading" ? "Envoi..." : submitLabel ?? (context === "estimation" ? "Demander mon estimation" : "Être recontacté")}
+        <Icon name="arrowRight" className={isHero ? "h-5 w-5 shrink-0" : "h-4 w-4"} />
       </button>
 
-      <p className="mt-3 text-[11px] leading-relaxed text-muted">
+      {isHero && (
+        <span className="mx-auto mt-4 flex w-fit max-w-full items-center justify-center gap-2 rounded-full bg-primary/[0.06] px-3 py-2 text-center text-[11px] font-medium leading-relaxed text-text">
+          <Icon name="clock" className="h-4 w-4 shrink-0 text-primary" />
+          <span className="min-w-0">Sous 48 h ouvrées · Sans engagement</span>
+        </span>
+      )}
+
+      <p className={isHero ? "mt-4 text-[11px] leading-relaxed text-text" : "mt-3 text-[11px] leading-relaxed text-muted"}>
         Vos informations servent à traiter votre demande et à vous recontacter.
         L&apos;envoi est assuré par Formspree. Réponse sous 48 h ouvrées,
         sans engagement.

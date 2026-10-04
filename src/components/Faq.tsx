@@ -1,12 +1,27 @@
 import Link from "next/link";
+import type { ReactNode } from "react";
 import type { FaqItem } from "@/lib/seo";
 import { Icon } from "./Icon";
 
-export function Faq({ items }: { items: FaqItem[] }) {
+export function Faq({
+  items,
+  title,
+  description = "Quelques repères pour commencer. Votre situation mérite un échange personnalisé avec notre équipe.",
+  id = "faq",
+  accordionName = "home-faq",
+}: {
+  items: FaqItem[];
+  title?: ReactNode;
+  description?: string;
+  id?: string;
+  accordionName?: string;
+}) {
+  const headingId = `${id}-heading`;
+
   return (
     <section
-      id="faq"
-      aria-labelledby="faq-heading"
+      id={id}
+      aria-labelledby={headingId}
       className="scroll-mt-24 bg-[#f7f7f5] py-16 lg:py-20"
     >
       <div className="mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-[0.8fr_1.4fr] lg:gap-12 lg:px-10 xl:gap-16">
@@ -17,18 +32,21 @@ export function Faq({ items }: { items: FaqItem[] }) {
               Questions fréquentes
             </span>
             <h2
-              id="faq-heading"
+              id={headingId}
               className="mt-5 text-4xl font-bold leading-[1.1] tracking-tight text-secondary sm:text-5xl xl:text-[56px]"
             >
-              <span className="block">Vos premières</span>
-              <span className="block">questions sur</span>
-              <span className="block">
-                le viager<span className="text-primary">.</span>
-              </span>
+              {title ?? (
+                <>
+                  <span className="block">Vos premières</span>
+                  <span className="block">questions sur</span>
+                  <span className="block">
+                    le viager<span className="text-primary">.</span>
+                  </span>
+                </>
+              )}
             </h2>
             <p className="mt-6 max-w-md text-base leading-relaxed text-text sm:text-lg">
-              Quelques repères pour commencer. Votre situation mérite un échange
-              personnalisé avec notre équipe.
+              {description}
             </p>
           </div>
 
@@ -50,7 +68,7 @@ export function Faq({ items }: { items: FaqItem[] }) {
           {items.map((item, index) => (
             <details
               key={item.question}
-              name="home-faq"
+              name={accordionName}
               open={index === 0}
               className="group border-b border-border open:rounded-2xl open:border-transparent open:bg-secondary"
             >
