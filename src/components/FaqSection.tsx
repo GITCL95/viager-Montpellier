@@ -1,6 +1,3 @@
-"use client";
-
-import { useState } from "react";
 import { Icon } from "./Icon";
 import type { FaqItem } from "@/lib/seo";
 
@@ -17,8 +14,6 @@ export function FaqSection({
   items: FaqItem[];
   id?: string;
 }) {
-  const [openIndex, setOpenIndex] = useState(0);
-
   return (
     <section id={id} className="bg-bg-gray py-20 lg:py-28">
       <div className="mx-auto max-w-3xl px-6 lg:px-10">
@@ -33,37 +28,29 @@ export function FaqSection({
         </div>
 
         <div className="mt-10 space-y-3">
-          {items.map((item, index) => {
-            const isOpen = index === openIndex;
-            return (
-              <div
+          {items.map((item, index) => (
+              <details
                 key={item.question}
-                className="overflow-hidden rounded-2xl bg-white ring-1 ring-border"
+                open={index === 0}
+                className="group overflow-hidden rounded-2xl bg-white ring-1 ring-border"
               >
-                <button
-                  type="button"
-                  onClick={() => setOpenIndex(isOpen ? -1 : index)}
-                  className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
+                <summary
+                  className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 text-left focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-secondary [&::-webkit-details-marker]:hidden"
                 >
-                  <span className="text-sm font-semibold text-secondary">
+                  <h3 className="text-sm font-semibold text-secondary">
                     {item.question}
-                  </span>
+                  </h3>
                   <span
-                    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary transition-transform ${
-                      isOpen ? "rotate-180" : ""
-                    }`}
+                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary transition-transform group-open:rotate-180 motion-reduce:transition-none"
                   >
                     <Icon name="chevronDown" className="h-4 w-4" />
                   </span>
-                </button>
-                {isOpen && (
-                  <div className="px-5 pb-5 text-sm leading-relaxed text-text">
+                </summary>
+                  <p className="px-5 pb-5 text-sm leading-relaxed text-text">
                     {item.answer}
-                  </div>
-                )}
-              </div>
-            );
-          })}
+                  </p>
+              </details>
+          ))}
         </div>
       </div>
     </section>

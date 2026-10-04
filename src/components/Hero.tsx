@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { heroStats } from "@/lib/site-data";
 import { Icon } from "./Icon";
 
@@ -17,31 +18,30 @@ export function Hero() {
           </span>
 
           <h1 className="mt-6 text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-[52px] lg:leading-[1.1]">
-            Viager à Montpellier : vendez ou achetez en toute sécurité
+            Votre agence viager à Montpellier
           </h1>
 
           <p className="mt-6 max-w-xl text-base leading-relaxed text-white/70">
-            Vous voulez vendre votre logement en viager sans quitter Montpellier
-            ? Ou acheter un bien décoté dans la métropole ? Notre agence vous
-            suit du premier rendez-vous jusqu&apos;à la signature chez le
-            notaire. Estimation gratuite, calculs transparents, aucun
-            engagement.
+            Vendre, acheter ou estimer votre bien : Patrimoine Cardinal vous
+            accompagne à chaque étape. Découvrez les solutions adaptées à
+            votre projet et échangez avec un conseiller, jusqu&apos;à la
+            signature chez le notaire.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-4">
-            <a
-              href="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-primary/30 transition-colors hover:bg-primary-dark"
+            <Link
+              href="/estimation-viager-montpellier"
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-primary/30 transition-colors hover:bg-primary-dark focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
             >
-              Estimation gratuite
+              Estimer mon bien
               <Icon name="arrowRight" className="h-4 w-4" />
-            </a>
-            <a
-              href="#biens"
-              className="inline-flex items-center gap-2 rounded-full border border-white/20 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+            </Link>
+            <Link
+              href="/acheter-en-viager-montpellier"
+              className="inline-flex items-center gap-2 rounded-full border border-white/20 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
             >
-              Nos biens en viager
-            </a>
+              Acheter en viager
+            </Link>
           </div>
 
           <div className="mt-10 grid grid-cols-3 gap-6 border-t border-white/10 pt-8">
@@ -68,7 +68,7 @@ export function Hero() {
               quality={95}
               unoptimized
               className="object-cover object-[center_25%]"
-              priority
+              preload
             />
           </div>
 
@@ -77,8 +77,8 @@ export function Hero() {
               <Icon name="shield" className="h-5 w-5" />
             </span>
             <div>
-              <p className="text-sm font-bold text-secondary">Vente sécurisée</p>
-              <p className="text-xs text-text">Acte notarié garanti</p>
+              <p className="text-sm font-bold text-secondary">À vos côtés</p>
+              <p className="text-xs text-text">Jusqu&apos;à l&apos;acte notarié</p>
             </div>
           </div>
 

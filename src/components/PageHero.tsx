@@ -11,7 +11,7 @@ export function PageHero({
   stats,
   breadcrumbs,
   primaryCtaLabel = "Estimation gratuite",
-  primaryCtaHref = "/contact",
+  primaryCtaHref = "/estimation-viager-montpellier",
   secondaryCtaLabel,
   secondaryCtaHref,
 }: {

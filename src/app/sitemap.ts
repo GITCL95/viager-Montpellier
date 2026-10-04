@@ -9,6 +9,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     { path: "/", priority: 1 },
     { path: "/contact", priority: 0.9 },
+    { path: "/estimation-viager-montpellier", priority: 0.9 },
+    { path: "/vendre-en-viager-montpellier", priority: 0.9 },
+    { path: "/acheter-en-viager-montpellier", priority: 0.9 },
+    { path: "/vente-a-terme-montpellier", priority: 0.8 },
     { path: "/viager-libre-montpellier", priority: 0.9 },
     { path: "/viager-occupe-montpellier", priority: 0.9 },
     { path: "/viager-herault", priority: 0.8 },

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { nav, sectorLinks } from "@/lib/site-data";
+import { nav, projectLinks, formulaLinks, sectorLinks } from "@/lib/site-data";
 import { agency } from "@/lib/seo";
 import { Icon } from "./Icon";
 import { Logo } from "./Logo";
@@ -32,10 +32,10 @@ export function Footer() {
 
         <div>
           <h3 className="text-sm font-semibold uppercase tracking-wide text-white">
-            Navigation
+            Votre projet
           </h3>
           <ul className="mt-4 space-y-3 text-sm">
-            {nav.map((item) => (
+            {[...projectLinks, ...formulaLinks, ...nav].map((item) => (
               <li key={item.href}>
                 <Link href={item.href} className="transition-colors hover:text-primary">
                   {item.label}
@@ -47,7 +47,7 @@ export function Footer() {
 
         <div>
           <h3 className="text-sm font-semibold uppercase tracking-wide text-white">
-            Nos services
+            Nos secteurs
           </h3>
           <ul className="mt-4 space-y-3 text-sm">
             {sectorLinks.map((item) => (
@@ -67,15 +67,15 @@ export function Footer() {
           <ul className="mt-4 space-y-3 text-sm">
             <li className="flex items-start gap-2">
               <Icon name="mapPin" className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-              12 Rue de la République, 34000 Montpellier
+              {agency.street}, {agency.postalCode} {agency.locality}
             </li>
             <li className="flex items-center gap-2">
               <Icon name="phone" className="h-4 w-4 shrink-0 text-primary" />
-              {agency.telephoneDisplay}
+              <a href={`tel:${agency.telephone}`} className="hover:text-white">{agency.telephoneDisplay}</a>
             </li>
             <li className="flex items-center gap-2">
               <Icon name="mail" className="h-4 w-4 shrink-0 text-primary" />
-              contact@viager-montpellier.fr
+              <a href={`mailto:${agency.email}`} className="break-all hover:text-white">{agency.email}</a>
             </li>
           </ul>
         </div>

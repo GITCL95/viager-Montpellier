@@ -336,7 +336,7 @@ export default function ViagerLibreMontpellierPage() {
           title="Prêt à étudier votre projet de viager libre ?"
           description="Nos conseillers réalisent une estimation gratuite de votre bien et vous répondent sous 48 h, sans engagement."
           primaryLabel="estimation gratuite de votre bien"
-          primaryHref="/contact"
+          primaryHref="/estimation-viager-montpellier"
         />
       </main>
 

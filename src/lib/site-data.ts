@@ -3,7 +3,13 @@ export const nav = [
   { label: "Contact", href: "/contact" },
 ];
 
-export const sectorLinks = [
+export const projectLinks = [
+  { label: "Vendre en viager", href: "/vendre-en-viager-montpellier" },
+  { label: "Acheter en viager", href: "/acheter-en-viager-montpellier" },
+  { label: "Estimer mon bien", href: "/estimation-viager-montpellier" },
+];
+
+export const formulaLinks = [
   {
     label: "Viager libre Montpellier",
     href: "/viager-libre-montpellier",
@@ -12,6 +18,10 @@ export const sectorLinks = [
     label: "Viager occupé Montpellier",
     href: "/viager-occupe-montpellier",
   },
+  { label: "Vente à terme Montpellier", href: "/vente-a-terme-montpellier" },
+];
+
+export const sectorLinks = [
   { label: "Viager Hérault", href: "/viager-herault" },
   { label: "Viager Sète", href: "/viager-sete" },
   { label: "Viager Nîmes", href: "/viager-nimes" },

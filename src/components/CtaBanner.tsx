@@ -4,7 +4,7 @@ export function CtaBanner({
   title,
   description,
   primaryLabel = "Estimation gratuite de votre bien",
-  primaryHref = "/contact",
+  primaryHref = "/estimation-viager-montpellier",
   secondaryLabel,
   secondaryHref,
 }: {
