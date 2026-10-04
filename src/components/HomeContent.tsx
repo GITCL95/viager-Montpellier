@@ -1,34 +1,38 @@
 import Link from "next/link";
 import type { FaqItem } from "@/lib/seo";
 import { Icon } from "./Icon";
+import { FormulaArchitecture, FormulaIllustration } from "./FormulaIllustrations";
 
 const formulas = [
   {
-    icon: "user",
+    illustration: "occupied",
     title: "Viager occupé",
     summary: "Continuer à vivre chez soi",
     description:
       "Le vendeur conserve un droit d'occupation défini dans l'acte. L'acquéreur prépare un investissement avec une disponibilité différée du logement.",
     href: "/viager-occupe-montpellier",
     label: "Comprendre le viager occupé",
+    highlight: "Occupation conservée",
   },
   {
-    icon: "key",
+    illustration: "free",
     title: "Viager libre",
     summary: "Un logement disponible dès la vente",
     description:
       "L'acquéreur peut occuper ou louer le logement dès la signature. Le paiement comprend une rente, avec ou sans bouquet selon l'accord.",
     href: "/viager-libre-montpellier",
     label: "Comprendre le viager libre",
+    highlight: "Disponibilité immédiate",
   },
   {
-    icon: "clock",
+    illustration: "term",
     title: "Vente à terme",
     summary: "Un paiement sur une durée définie",
     description:
       "Le prix est réglé selon un calendrier fixé au contrat. Les conditions d'occupation et les échéances sont déterminées avant la signature.",
     href: "/vente-a-terme-montpellier",
     label: "Découvrir la vente à terme",
+    highlight: "Échéances fixées au contrat",
   },
 ] as const;
 
@@ -85,46 +89,74 @@ export const homeFaqs: FaqItem[] = [
 
 export function HomeFormulas() {
   return (
-    <section id="formules" className="scroll-mt-24 bg-bg-gray py-16 lg:py-20">
+    <section
+      id="formules"
+      aria-labelledby="formulas-heading"
+      className="relative isolate scroll-mt-24 overflow-hidden bg-[#062f40] bg-[radial-gradient(ellipse_at_top_left,#0b3b4d_0%,transparent_65%)] py-14 text-white lg:py-16"
+    >
+      <FormulaArchitecture className="pointer-events-none absolute -right-12 -top-6 -z-10 h-64 w-64 text-[#8db1c3]/40 sm:h-80 sm:w-80 lg:-right-6" />
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="mx-auto max-w-2xl text-center">
-          <span className="text-xs font-semibold uppercase tracking-wide text-primary">
-            Les formules
-          </span>
-          <h2 className="mt-3 text-3xl font-bold text-secondary sm:text-4xl">
-            Quelle formule correspond à votre projet ?
-          </h2>
-          <p className="mt-4 leading-relaxed text-text">
+        <div className="grid gap-5 lg:grid-cols-[1.3fr_1fr] lg:items-center lg:gap-16">
+          <div>
+            <span className="flex items-center gap-4 text-sm font-semibold uppercase tracking-[0.12em] text-primary">
+              <span aria-hidden="true" className="h-1 w-8 rounded-full bg-primary" />
+              Les formules
+            </span>
+            <h2 id="formulas-heading" className="mt-4 max-w-2xl text-3xl font-bold leading-[1.12] tracking-tight sm:text-4xl xl:text-5xl">
+              Quelle formule correspond{" "}
+              <br className="hidden sm:block" />
+              à votre projet ?
+            </h2>
+          </div>
+          <p className="max-w-md text-base leading-relaxed text-[#b6cfdd] lg:pt-6 lg:text-lg">
             L&apos;occupation du logement et la durée du paiement sont deux
             critères essentiels pour choisir.
           </p>
         </div>
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
-          {formulas.map((formula) => (
-            <Link
-              key={formula.href}
-              href={formula.href}
-              className="group flex flex-col rounded-3xl bg-white p-7 ring-1 ring-border transition-shadow hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary"
-            >
-              <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
-                <Icon name={formula.icon} className="h-6 w-6" />
-              </span>
-              <h3 className="mt-5 text-xl font-bold text-secondary">
-                {formula.title}
-              </h3>
-              <p className="mt-2 text-sm font-semibold text-secondary/80">
-                {formula.summary}
-              </p>
-              <p className="mt-3 flex-1 text-sm leading-relaxed text-text">
-                {formula.description}
-              </p>
-              <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary group-hover:underline">
-                {formula.label}
-                <Icon name="arrowRight" className="h-4 w-4 shrink-0" />
-              </span>
-            </Link>
+        <ul className="mt-8 divide-y divide-[#88b0c4]/45 lg:mt-10">
+          {formulas.map((formula, index) => (
+            <li key={formula.href}>
+              <Link
+                href={formula.href}
+                aria-label={formula.label}
+                className="group grid grid-cols-[72px_minmax(0,1fr)_48px] items-center gap-x-4 gap-y-5 py-7 transition-colors hover:bg-white/[0.025] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary sm:grid-cols-[88px_minmax(0,1fr)_56px] lg:grid-cols-[120px_152px_minmax(0,0.9fr)_minmax(0,1.25fr)_64px] lg:gap-x-6 lg:py-7 xl:grid-cols-[130px_170px_minmax(0,0.9fr)_minmax(0,1.25fr)_72px] xl:gap-x-8"
+              >
+                <span
+                  aria-hidden="true"
+                  className="col-start-1 row-start-1 select-none text-[64px] font-bold leading-none tracking-[-0.07em] text-transparent sm:text-[76px] lg:border-r lg:border-[#88b0c4]/50 lg:py-2 lg:pr-6 lg:text-[96px] xl:text-[104px]"
+                  style={{ WebkitTextStroke: "1px #7ba2b7" }}
+                >
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <FormulaIllustration
+                  kind={formula.illustration}
+                  className="col-start-2 row-start-1 mx-auto h-auto w-28 max-w-full text-white sm:w-40 lg:w-full"
+                />
+                <div className="col-span-3 row-start-2 min-w-0 lg:col-span-1 lg:col-start-3 lg:row-start-1">
+                  <h3 className="text-2xl font-bold leading-tight text-white xl:text-[32px]">
+                    {formula.title}
+                  </h3>
+                  <p className="mt-2 text-lg leading-snug text-[#92b4c8] xl:text-xl">
+                    {formula.summary}
+                  </p>
+                </div>
+                <div className="col-span-3 row-start-3 min-w-0 lg:col-span-1 lg:col-start-4 lg:row-start-1 lg:border-l lg:border-[#88b0c4]/50 lg:pl-6 xl:pl-8">
+                  <p className="text-base leading-relaxed text-[#b6cfdd]">
+                    {formula.description}
+                  </p>
+                  <p className="mt-3 text-base font-semibold text-primary">
+                    {formula.highlight}
+                  </p>
+                </div>
+                <span aria-hidden="true" className="col-start-3 row-start-1 flex h-12 w-12 items-center justify-center rounded-full bg-primary text-white transition-colors group-hover:bg-primary-dark sm:h-14 sm:w-14 lg:col-start-5 lg:h-16 lg:w-16 xl:h-[72px] xl:w-[72px]">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="h-7 w-7 sm:h-8 sm:w-8 xl:h-10 xl:w-10" focusable="false">
+                    <path d="M6 18 18 6M6 6h12v12" />
+                  </svg>
+                </span>
+              </Link>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );
