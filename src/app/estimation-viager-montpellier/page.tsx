@@ -21,6 +21,7 @@ export const metadata: Metadata = {
 };
 
 const faqs = [
+  { question: "Comment accéder au résultat de ma simulation ?", answer: "Renseignez votre bien et la situation du ou des vendeurs, puis votre e-mail et votre téléphone. Ces deux coordonnées sont obligatoires. Après l'envoi de votre demande à l'agence, le bouquet et la rente indicatifs s'affichent et vous pouvez ajuster leur répartition. L'équipe peut vous recontacter pour préciser votre projet, sans engagement." },
   { question: "Quelle différence entre simulation et estimation viager ?", answer: "La simulation calcule des montants indicatifs à partir de la valeur du bien que vous renseignez et d'hypothèses actuarielle et locative. L'estimation personnalisée vérifie cette valeur immobilière, votre situation et les droits à conserver pour préparer des conditions adaptées à votre vente." },
   { question: "Comment est calculée la décote du viager occupé ?", answer: "Le simulateur valorise l'occupation à partir d'une valeur locative annuelle, de la table de mortalité et du taux d'actualisation choisis. Cette approche économique fournit une hypothèse. Le droit d'usage et d'habitation ou l'usufruit conservé et les conditions du contrat doivent être examinés pour une étude personnalisée." },
   { question: "Faut-il obligatoirement un bouquet de 30 % ?", answer: "Non. Le curseur commence à 30 % de la base de calcul pour vous permettre de comparer les répartitions. Le bouquet est facultatif et se négocie avec la rente. Vous pouvez modifier sa part et observer l'effet sur la rente mensuelle simulée." },
@@ -49,7 +50,7 @@ export default function EstimationViagerMontpellierPage() {
               <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-white/70"><span className="mr-3 text-primary">—</span>Mettre des chiffres sur votre projet</p>
               <h1 id="estimation-heading" className="mt-5 text-[38px] font-semibold leading-[1.13] tracking-tight text-white sm:text-5xl xl:text-[54px]">Estimation viager<br /><span className="font-serif font-normal italic">à Montpellier.</span></h1>
               <p className="mt-6 max-w-md text-base leading-[1.8] text-white/80 sm:text-lg">Quel capital au départ ? Quel revenu ensuite ? Explorez une première répartition entre bouquet et rente, puis faisons le point sur votre logement.</p>
-              <div className="mt-8 flex items-start gap-4 border-t border-white/20 pt-6"><span aria-hidden="true" className="font-serif text-4xl text-primary">€</span><p className="max-w-xs text-sm leading-[1.8] text-white/75">Un calcul immédiat pour comparer.<br />Un conseiller pour préciser votre estimation.</p></div>
+              <div className="mt-8 flex items-start gap-4 border-t border-white/20 pt-6"><span aria-hidden="true" className="font-serif text-4xl text-primary">€</span><p className="max-w-xs text-sm leading-[1.8] text-white/75">Votre résultat après vos coordonnées.<br />Un conseiller pour préciser votre estimation.</p></div>
               <a href={`tel:${agency.telephone}`} className="mt-7 inline-flex items-center gap-3 rounded-sm text-sm font-semibold text-white hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"><Icon name="phone" className="h-4 w-4 text-primary" />{agency.telephoneDisplay}</a>
             </div>
             <ViagerSimulator />

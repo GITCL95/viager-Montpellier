@@ -4,11 +4,12 @@ import { useEffect, useRef, useState, type FormEvent } from "react";
 import { Icon } from "./Icon";
 import { SectionButton } from "./SectionButton";
 import { calculateViager, type ViagerInputs } from "@/lib/viager-calculation";
+import { submitSimulationLead } from "@/lib/simulation-lead";
 
 const money = new Intl.NumberFormat("fr-FR", { style: "currency", currency: "EUR", maximumFractionDigits: 0 });
 const inputClass = "min-h-12 min-w-0 w-full rounded-lg border border-border bg-white px-3 py-2 text-base font-normal text-secondary focus:outline-2 focus:outline-offset-2 focus:outline-primary";
 const buttonClass = "inline-flex min-h-12 items-center justify-center gap-3 rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-white hover:bg-primary-dark focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary";
-const labels = ["Le bien", "Les vendeurs", "Votre simulation"];
+const labels = ["Bien", "Vendeurs", "Coordonnées", "Résultat"];
 
 export function ViagerSimulator() {
   const [step, setStep] = useState(0);
@@ -20,9 +21,13 @@ export function ViagerSimulator() {
   const [rentalRate, setRentalRate] = useState("4");
   const [bouquetShare, setBouquetShare] = useState(30);
   const [calculation, setCalculation] = useState<ViagerInputs | null>(null);
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
   const titleRef = useRef<HTMLHeadingElement>(null);
   const previousStep = useRef(step);
+  const submissionInFlight = useRef(false);
 
   useEffect(() => {
     if (previousStep.current !== step) titleRef.current?.focus();
@@ -51,16 +56,33 @@ export function ViagerSimulator() {
     } catch (cause) { setError(cause instanceof Error ? cause.message : "Vérifiez les informations de votre simulation."); }
   }
 
-  const result = step === 2 && calculation ? calculateViager({ ...calculation, bouquetShare: bouquetShare / 100 }) : null;
+  async function submitContact(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (submissionInFlight.current || !calculation) return;
+    submissionInFlight.current = true;
+    setIsSubmitting(true);
+    setError("");
+    try {
+      await submitSimulationLead({ email, phone, calculation });
+      setStep(3);
+    } catch (cause) {
+      setError(cause instanceof Error ? cause.message : "Votre demande n'a pas pu être envoyée. Réessayez pour accéder à votre résultat.");
+    } finally {
+      submissionInFlight.current = false;
+      setIsSubmitting(false);
+    }
+  }
+
+  const result = step === 3 && calculation ? calculateViager({ ...calculation, bouquetShare: bouquetShare / 100 }) : null;
 
   return (
     <div id="simulateur-viager" className="min-w-0 scroll-mt-28 overflow-hidden rounded-2xl border border-border bg-white text-secondary">
       <div className="px-6 pt-6 sm:px-7 sm:pt-7">
-        <ol aria-label="Étapes de la simulation" className="flex gap-4 border-b border-border pb-5 text-[11px] sm:gap-6">
+        <ol aria-label="Étapes de la simulation" className="grid grid-cols-2 gap-x-4 gap-y-2 border-b border-border pb-5 text-[11px] sm:flex sm:gap-4">
           {labels.map((label, index) => <li key={label} aria-current={step === index ? "step" : undefined} className={step === index ? "font-semibold text-secondary" : "text-text"}><span className={`mr-1.5 ${step >= index ? "text-primary" : "text-muted"}`}>0{index + 1}</span>{label}</li>)}
         </ol>
         <h2 ref={titleRef} tabIndex={-1} className="mt-6 text-2xl font-semibold leading-tight tracking-tight outline-none">
-          {step === 0 ? "Donnons une base à votre projet." : step === 1 ? "Qui vend le logement ?" : "Bouquet et rente, à votre rythme."}
+          {step === 0 ? "Donnons une base à votre projet." : step === 1 ? "Qui vend le logement ?" : step === 2 ? "Accédez à votre simulation." : "Bouquet et rente, à votre rythme."}
         </h2>
       </div>
 
@@ -116,9 +138,27 @@ export function ViagerSimulator() {
           {error ? <p role="alert" className="mt-4 text-sm leading-relaxed text-red-700">{error}</p> : null}
           <div className="mt-6 flex items-center gap-4">
             {step === 1 ? <button type="button" onClick={() => { setStep(0); setError(""); }} className="min-h-12 rounded-sm text-sm underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-primary">Retour</button> : null}
-            <button type="submit" className={`${buttonClass} flex-1`}>{step === 0 ? "Continuer" : "Voir ma simulation"}<Icon name="arrowRight" className="h-4 w-4" /></button>
+            <button type="submit" className={`${buttonClass} flex-1`}>Continuer<Icon name="arrowRight" className="h-4 w-4" /></button>
           </div>
-          <p className="mt-4 text-[11px] leading-relaxed text-text">Simulation indicative · Aucun contact demandé pour calculer.</p>
+          <p className="mt-4 text-[11px] leading-relaxed text-text">Résultat après saisie de votre e-mail et de votre téléphone · Sans engagement.</p>
+        </form>
+      ) : step === 2 ? (
+        <form onSubmit={submitContact} aria-busy={isSubmitting} className="px-6 pb-6 sm:px-7 sm:pb-7">
+          <p className="mt-4 text-sm leading-[1.8] text-text">Renseignez votre e-mail et votre téléphone pour découvrir votre bouquet et votre rente. Notre équipe pourra vous recontacter pour préciser votre projet.</p>
+          <div className="mt-6 grid gap-4">
+            <label className="grid gap-2 text-xs font-medium">Votre e-mail
+              <input required disabled={isSubmitting} type="email" name="email" autoComplete="email" maxLength={254} value={email} onChange={event => { setEmail(event.target.value); setError(""); }} placeholder="Adresse e-mail" aria-describedby="simulation-contact-note" className={inputClass} />
+            </label>
+            <label className="grid gap-2 text-xs font-medium">Votre téléphone
+              <input required disabled={isSubmitting} type="tel" name="phone" autoComplete="tel" inputMode="tel" maxLength={24} value={phone} onChange={event => { setPhone(event.target.value); setError(""); }} placeholder="Numéro de téléphone" aria-describedby="simulation-contact-note" className={inputClass} />
+            </label>
+          </div>
+          {error ? <p role="alert" className="mt-4 text-sm leading-relaxed text-red-700">{error}</p> : null}
+          <div className="mt-6 flex items-center gap-4">
+            <button type="button" disabled={isSubmitting} onClick={() => { setStep(1); setError(""); }} className="min-h-12 rounded-sm text-sm underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-primary disabled:opacity-60">Retour</button>
+            <button type="submit" disabled={isSubmitting} className={`${buttonClass} flex-1 disabled:cursor-wait disabled:opacity-70`}>{isSubmitting ? "Envoi en cours…" : "Afficher mon résultat"}<Icon name="arrowRight" className="h-4 w-4 shrink-0" /></button>
+          </div>
+          <p id="simulation-contact-note" className="mt-4 text-[11px] leading-[1.8] text-text">En affichant votre résultat, vous transmettez vos coordonnées et les informations de votre simulation à Viager Montpellier pour traiter votre demande et vous recontacter. L&apos;envoi est assuré par Formspree. Sans engagement.</p>
         </form>
       ) : result && calculation ? (
         <div className="px-6 pb-6 sm:px-7 sm:pb-7">
