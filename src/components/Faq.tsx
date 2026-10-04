@@ -1,56 +1,98 @@
-import Image from "next/image";
+import Link from "next/link";
 import type { FaqItem } from "@/lib/seo";
 import { Icon } from "./Icon";
 
 export function Faq({ items }: { items: FaqItem[] }) {
   return (
-    <section id="faq" className="scroll-mt-24 bg-white py-16 lg:py-20">
-      <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-2 lg:items-center lg:px-10">
-        <div className="relative mx-auto hidden w-full max-w-md lg:block lg:max-w-none">
-          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2rem]">
-            <Image
-              src="https://images.unsplash.com/photo-1758686253677-d3af6c15186e?auto=format&fit=crop&w=900&q=80"
-              alt="Couple de seniors souriants"
-              fill
-              sizes="(min-width: 1024px) 560px, 90vw"
-              className="object-cover"
-            />
+    <section
+      id="faq"
+      aria-labelledby="faq-heading"
+      className="scroll-mt-24 bg-[#f7f7f5] py-16 lg:py-20"
+    >
+      <div className="mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-[0.8fr_1.4fr] lg:gap-12 lg:px-10 xl:gap-16">
+        <div className="flex flex-col">
+          <div>
+            <span className="flex items-center gap-3 text-xs font-semibold uppercase tracking-wide text-primary sm:text-sm">
+              <span aria-hidden="true" className="h-0.5 w-7 bg-primary" />
+              Questions fréquentes
+            </span>
+            <h2
+              id="faq-heading"
+              className="mt-5 text-4xl font-bold leading-[1.1] tracking-tight text-secondary sm:text-5xl xl:text-[56px]"
+            >
+              <span className="block">Vos premières</span>
+              <span className="block">questions sur</span>
+              <span className="block">
+                le viager<span className="text-primary">.</span>
+              </span>
+            </h2>
+            <p className="mt-6 max-w-md text-base leading-relaxed text-text sm:text-lg">
+              Quelques repères pour commencer. Votre situation mérite un échange
+              personnalisé avec notre équipe.
+            </p>
+          </div>
+
+          <div className="mt-9 border-t border-border pt-7 lg:mt-auto lg:pt-8">
+            <p className="text-base font-semibold text-secondary">
+              Vous avez une autre question ?
+            </p>
+            <Link
+              href="/contact"
+              className="mt-5 inline-flex min-h-14 items-center justify-center gap-4 rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-primary-dark focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary motion-reduce:transition-none sm:text-base"
+            >
+              Parlons de votre projet
+              <Icon name="arrowRight" className="h-5 w-5 shrink-0" />
+            </Link>
           </div>
         </div>
 
-        <div>
-          <span className="text-xs font-semibold uppercase tracking-wide text-primary">
-            Questions fréquentes
-          </span>
-          <h2 className="mt-3 text-3xl font-bold text-secondary sm:text-4xl">
-            Vos premières questions sur le viager
-          </h2>
-          <p className="mt-4 leading-relaxed text-text">
-            Quelques repères pour commencer. Votre situation mérite un échange
-            personnalisé avec notre équipe.
-          </p>
-
-          <div className="mt-8 space-y-3">
-            {items.map((item, index) => (
-              <details
-                key={item.question}
-                open={index === 0}
-                className="group overflow-hidden rounded-2xl bg-bg-gray ring-1 ring-border"
-              >
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-secondary [&::-webkit-details-marker]:hidden">
-                  <h3 className="text-sm font-semibold text-secondary">
-                    {item.question}
-                  </h3>
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary transition-transform group-open:rotate-180 motion-reduce:transition-none">
-                    <Icon name="chevronDown" className="h-4 w-4" />
-                  </span>
-                </summary>
-                <p className="px-5 pb-5 text-sm leading-relaxed text-text">
+        <div className="space-y-2">
+          {items.map((item, index) => (
+            <details
+              key={item.question}
+              name="home-faq"
+              open={index === 0}
+              className="group border-b border-border open:rounded-2xl open:border-transparent open:bg-secondary"
+            >
+              <summary className="grid cursor-pointer list-none grid-cols-[36px_minmax(0,1fr)_36px] items-center gap-3 px-4 py-6 focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-secondary group-open:focus-visible:outline-primary sm:grid-cols-[44px_minmax(0,1fr)_40px] sm:gap-5 sm:px-7 sm:py-7 [&::-webkit-details-marker]:hidden">
+                <span
+                  aria-hidden="true"
+                  className="border-r border-border py-1 pr-3 text-base font-medium tabular-nums text-text/60 group-open:border-white/20 group-open:text-primary sm:pr-4 sm:text-lg"
+                >
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <h3 className="text-lg font-bold leading-snug tracking-tight text-secondary group-open:text-white sm:text-xl xl:text-2xl">
+                  {item.question}
+                </h3>
+                <span
+                  aria-hidden="true"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-primary text-primary group-open:bg-primary group-open:text-white sm:h-10 sm:w-10"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={1.8}
+                    strokeLinecap="round"
+                    className="h-5 w-5"
+                    focusable="false"
+                  >
+                    <path d="M5 12h14" />
+                    <path d="M12 5v14" className="group-open:hidden" />
+                  </svg>
+                </span>
+              </summary>
+              <div className="px-5 pb-7 sm:pl-[92px] sm:pr-7">
+                <p className="text-base leading-relaxed text-white/80">
                   {item.answer}
                 </p>
-              </details>
-            ))}
-          </div>
+                <span
+                  aria-hidden="true"
+                  className="mt-5 block h-0.5 w-10 bg-primary"
+                />
+              </div>
+            </details>
+          ))}
         </div>
       </div>
     </section>
