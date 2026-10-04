@@ -12,7 +12,7 @@ import { absoluteUrl, agency, breadcrumbJsonLd, faqJsonLd, realEstateAgentJsonLd
 
 const PATH = "/viager-libre-montpellier";
 const TITLE = "Viager libre à Montpellier : usage, bouquet et rente";
-const DESCRIPTION = `Viager libre à Montpellier : logement disponible, bouquet, rente et budget de l'acquéreur. Patrimoine Cardinal : ${agency.telephoneDisplay}.`;
+const DESCRIPTION = `Viager libre à Montpellier : logement disponible, bouquet et rente. Préparez votre projet avec Patrimoine Cardinal. Appelez le ${agency.telephoneDisplay}.`;
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -99,7 +99,7 @@ export default function ViagerLibreMontpellierPage() {
                 <p className="mt-6 max-w-lg text-base leading-[1.8] text-white/80 sm:text-lg">Un logement pour y vivre ou le louer. En viager libre, le vendeur ne conserve pas son occupation : l&apos;usage du bien et les paiements se préparent dès la vente.</p>
                 <figure className="mt-8 max-w-xl">
                   <div className="relative aspect-[3/1] overflow-hidden rounded-lg sm:aspect-[3.2/1]">
-                    <Image src="/images/project-buy.webp" alt="Une façade montpelliéraine illustrant un projet immobilier" fill preload sizes="(min-width: 1280px) 588px, (min-width: 1024px) 55vw, calc(100vw - 48px)" className="object-cover object-[center_45%]" />
+                    <Image src="/images/project-buy.webp" alt="Façades en pierre et balcons donnant sur une rue arborée" fill preload sizes="(min-width: 1280px) 588px, (min-width: 1024px) 55vw, calc(100vw - 48px)" className="object-cover object-[center_45%]" />
                   </div>
                   <figcaption className="mt-3 flex items-center gap-3 text-xs leading-relaxed text-white/65"><span aria-hidden="true" className="h-px w-7 shrink-0 bg-primary" />La disponibilité du bien, au cœur de votre projet.</figcaption>
                 </figure>
@@ -141,6 +141,7 @@ export default function ViagerLibreMontpellierPage() {
               <h2 id="libre-budget-heading" className={`mt-5 ${heading}`}>Le prix s&apos;étudie.<br />Le budget se prévoit.</h2>
               <p className="mt-5 max-w-sm text-base leading-[1.8] text-text">Bouquet, rente et dépenses du logement se regardent ensemble. Une disponibilité immédiate ne rend pas certain le coût final d&apos;une rente viagère.</p>
               <p className="mt-5 max-w-sm text-sm leading-[1.8] text-text">La durée de versement dépend de la vie du vendeur. L&apos;éventuelle indexation et la périodicité sont précisées dans l&apos;acte.</p>
+              <Link href="/estimation-viager-montpellier" className={`mt-5 inline-flex min-h-11 items-center gap-2 text-sm font-medium text-secondary ${textLink}`}>Faire étudier le bouquet et la rente<Icon name="arrowRight" className="h-4 w-4" /></Link>
               <p className="mt-5 text-xs leading-[1.8] text-text"><a href="https://www.economie.gouv.fr/particuliers/gerer-mon-argent/investir-dans-limmobilier/le-viager-comment-ca-marche" className={textLink}>Le principe d&apos;aléa expliqué par le ministère de l&apos;Économie</a>.</p>
             </div>
             <div>

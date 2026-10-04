@@ -183,6 +183,7 @@ export default function ViagerBeziersPage() {
               ))}
             </div>
             <p className="mt-3 border-t border-border pt-5 text-xs leading-[1.8] text-text">Ces secteurs sont répertoriés dans <a href="https://www.ville-beziers.fr/annuaires/quartiers" className="rounded-sm underline underline-offset-4 hover:text-secondary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">l&apos;annuaire des quartiers de la Ville de Béziers</a>. Pour un logement situé dans un autre quartier de la ville, précisez simplement votre adresse lors du premier échange.</p>
+            <p className="mt-5 text-sm leading-[1.8] text-text">Votre logement se trouve dans une autre commune ? Retrouvez nos <Link href="/viager-herault" className="rounded-sm underline underline-offset-4 hover:text-secondary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">secteurs d&apos;intervention en viager dans l&apos;Hérault</Link>.</p>
           </div>
         </section>
 

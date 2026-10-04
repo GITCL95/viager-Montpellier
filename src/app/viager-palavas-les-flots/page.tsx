@@ -12,7 +12,7 @@ import { absoluteUrl, agency, breadcrumbJsonLd, faqJsonLd, realEstateAgentJsonLd
 
 const PATH = "/viager-palavas-les-flots";
 const TITLE = "Viager Palavas-les-Flots : votre logement et vos droits";
-const DESCRIPTION = `Viager à Palavas-les-Flots : résidence principale, secondaire ou louée. Étude du logement, de ses droits et de votre projet au ${agency.telephoneDisplay}.`;
+const DESCRIPTION = `Viager à Palavas-les-Flots : étude de votre logement, de ses droits et des conditions de vente. Appelez Patrimoine Cardinal au ${agency.telephoneDisplay}.`;
 const SHARE_IMAGE = "/images/hero-background-montpellier.webp";
 
 export const metadata: Metadata = {
@@ -156,6 +156,7 @@ export default function ViagerPalavasLesFlotsPage() {
               ))}
             </ul>
             <p className="mt-7 text-xs leading-[1.8] text-text">Repères municipaux : <a href="https://palavaslesflots.com/actualite/retour-sur-les-reunions-de-quartiers/" className={sourceClass}>les réunions de quartiers de Palavas-les-Flots</a>. Pour les possibilités dans l&apos;espace public, consultez <a href="https://palavaslesflots.com/utile/transports/stationnement/" className={sourceClass}>les informations de stationnement de la Ville</a>.</p>
+            <p className="mt-5 text-sm leading-[1.8] text-text">Vous possédez un bien dans une autre commune du département ? Découvrez notre <Link href="/viager-herault" className={sourceClass}>accompagnement en viager dans l&apos;Hérault</Link>.</p>
           </div>
         </section>
 

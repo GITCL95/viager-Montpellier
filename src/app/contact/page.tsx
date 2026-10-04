@@ -17,7 +17,7 @@ import {
 const PATH = "/contact";
 const TITLE = "Contact | Viager Montpellier by Patrimoine Cardinal";
 const DESCRIPTION =
-  "Contactez notre agence viager à Montpellier : demandez votre estimation gratuite, posez vos questions, un conseiller vous répond sous 48 h.";
+  `Contactez notre agence viager à Montpellier pour vendre, acheter ou estimer votre bien. Appelez Patrimoine Cardinal au ${agency.telephoneDisplay}.`;
 
 export const metadata: Metadata = {
   title: TITLE,

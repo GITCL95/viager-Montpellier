@@ -12,7 +12,7 @@ import { absoluteUrl, agency, breadcrumbJsonLd, faqJsonLd, realEstateAgentJsonLd
 
 const PATH = "/viager-occupe-montpellier";
 const TITLE = "Viager occupé Montpellier : droits, bouquet et rente";
-const DESCRIPTION = `Viager occupé à Montpellier : droits d'occupation, bouquet et rente. Patrimoine Cardinal vous accompagne. Contact : ${agency.telephoneDisplay}.`;
+const DESCRIPTION = `Viager occupé à Montpellier : droits d'occupation, bouquet et rente. Étudiez votre projet avec Patrimoine Cardinal. Appelez le ${agency.telephoneDisplay}.`;
 
 export const metadata: Metadata = {
   title: TITLE,

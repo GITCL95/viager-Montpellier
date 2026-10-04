@@ -141,6 +141,7 @@ export default function ViagerSetePage() {
               ))}
             </ul>
             <p className="mt-7 text-xs leading-relaxed text-text">Repères de quartier : <a href="https://reservation.archipel-thau.com/medias/documents/01_DOCUMENTATIONS/Petit_plan_de_Sete_2025-2026_last150126.pdf" className="rounded-sm underline underline-offset-4 hover:text-secondary">le plan de Sète publié par l&apos;office de tourisme</a>.</p>
+            <p className="mt-5 text-sm leading-[1.8] text-text">Un bien situé ailleurs dans le département ? Découvrez nos autres <Link href="/viager-herault" className="rounded-sm underline underline-offset-4 hover:text-secondary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">secteurs de viager dans l&apos;Hérault</Link>.</p>
           </div>
         </section>
 

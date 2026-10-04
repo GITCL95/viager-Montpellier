@@ -175,6 +175,7 @@ export default function ViagerAgdePage() {
                 </article>
               ))}
             </div>
+            <p className="mt-7 text-sm leading-[1.8] text-text">Pour un logement situé ailleurs dans le département, retrouvez nos <Link href="/viager-herault" className="rounded-sm underline underline-offset-4 hover:text-secondary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">secteurs de viager dans l&apos;Hérault</Link>.</p>
           </div>
         </section>
 

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { SITE_URL } from "@/lib/seo";
+import { agency, SITE_URL } from "@/lib/seo";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     template: "%s",
   },
   description:
-    "Agence spécialisée en viager à Montpellier. Estimation gratuite, accompagnement juridique et notarial pour vendre ou acheter votre bien en viager en toute confiance.",
+    `Vendre, acheter ou estimer un bien en viager à Montpellier avec Patrimoine Cardinal. Parlons de votre projet : appelez le ${agency.telephoneDisplay}.`,
   verification: {
     google: "EQC7SCVvE7ks_jvdgxmxsNOComk7OyOY2VRS7bv7vdw",
   },

@@ -68,7 +68,7 @@ export function Hero() {
           <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2rem] ring-1 ring-white/10">
             <Image
               src="/images/hero-home.png"
-              alt="Couple de seniors souriants à Montpellier, accompagnés pour une vente en viager"
+              alt="Couple de seniors souriants devant des maisons en pierre"
               fill
               sizes="(min-width: 1024px) 720px, 100vw"
               quality={95}
