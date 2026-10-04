@@ -143,7 +143,7 @@ export default function ViagerOccupeMontpellierPage() {
           </div>
         </section>
 
-        <section id="simulation" className="bg-bg-gray py-20 lg:py-28">
+        <section id="simulation" className="scroll-mt-28 bg-bg-gray py-20 lg:py-28">
           <div className="mx-auto max-w-7xl px-6 lg:px-10 lg:grid lg:grid-cols-2 lg:gap-14">
             <div>
               <SectionHeading

@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Icon } from "./Icon";
+import { CtaLink } from "./CtaLink";
 
 type Stat = { value: string; label: string };
 type Crumb = { label: string; href?: string };
@@ -69,20 +70,20 @@ export function PageHero({
         </p>
 
         <div className="mt-8 flex flex-wrap items-center gap-4">
-          <a
+          <CtaLink
             href={primaryCtaHref}
             className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-primary/30 transition-colors hover:bg-primary-dark"
           >
             {primaryCtaLabel}
             <Icon name="arrowRight" className="h-4 w-4" />
-          </a>
+          </CtaLink>
           {secondaryCtaLabel && secondaryCtaHref && (
-            <a
+            <CtaLink
               href={secondaryCtaHref}
               className="inline-flex items-center gap-2 rounded-full border border-white/20 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-white/10"
             >
               {secondaryCtaLabel}
-            </a>
+            </CtaLink>
           )}
         </div>
 

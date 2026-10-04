@@ -1,4 +1,5 @@
 import { Icon } from "./Icon";
+import { CtaLink } from "./CtaLink";
 
 export function CtaBanner({
   title,
@@ -25,20 +26,20 @@ export function CtaBanner({
           </p>
         )}
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-          <a
+          <CtaLink
             href={primaryHref}
             className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-primary/30 transition-colors hover:bg-primary-dark"
           >
             {primaryLabel}
             <Icon name="arrowRight" className="h-4 w-4" />
-          </a>
+          </CtaLink>
           {secondaryLabel && secondaryHref && (
-            <a
+            <CtaLink
               href={secondaryHref}
               className="inline-flex items-center gap-2 rounded-full border border-white/20 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-white/10"
             >
               {secondaryLabel}
-            </a>
+            </CtaLink>
           )}
         </div>
       </div>

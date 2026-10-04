@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { formulaLinks, projectLinks, sectorLinks } from "@/lib/site-data";
 import { agency } from "@/lib/seo";
 import { Icon } from "./Icon";
@@ -14,9 +15,25 @@ const groups = [
 ];
 
 export function Header() {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [openGroup, setOpenGroup] = useState<string | null>(null);
   const headerRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    function removeSectionHash() {
+      if (!window.location.hash) return;
+      window.history.replaceState(
+        window.history.state,
+        "",
+        window.location.pathname + window.location.search
+      );
+    }
+
+    removeSectionHash();
+    window.addEventListener("hashchange", removeSectionHash);
+    return () => window.removeEventListener("hashchange", removeSectionHash);
+  }, [pathname]);
 
   function closeMenus() {
     setOpen(false);

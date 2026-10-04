@@ -313,7 +313,7 @@ export default function ViagerLibreMontpellierPage() {
           </div>
         </section>
 
-        <section id="biens-libres" className="bg-white py-20 lg:py-28">
+        <section id="biens-libres" className="scroll-mt-28 bg-white py-20 lg:py-28">
           <div className="mx-auto max-w-7xl px-6 lg:px-10">
             <SectionHeading
               eyebrow="Nos biens"
