@@ -1,7 +1,9 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { FaqItem } from "@/lib/seo";
 import { Icon } from "./Icon";
 import { FormulaArchitecture, FormulaIllustration } from "./FormulaIllustrations";
+import { SectorCompass, SectorIcon } from "./SectorIcons";
 
 const formulas = [
   {
@@ -163,44 +165,105 @@ export function HomeFormulas() {
 }
 
 export function HomeSectors() {
+  const sectorIcons = ["herault", "sete", "nimes", "beziers"] as const;
+
   return (
-    <section id="secteurs" className="scroll-mt-24 bg-white py-16 lg:py-20">
+    <section
+      id="secteurs"
+      aria-labelledby="sectors-heading"
+      className="scroll-mt-24 bg-[#f7f7f5] py-16 lg:py-20"
+    >
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <span className="text-xs font-semibold uppercase tracking-wide text-primary">
-          Une présence locale
-        </span>
-        <h2 className="mt-3 text-3xl font-bold text-secondary sm:text-4xl">
-          Montpellier et nos secteurs d&apos;intervention
-        </h2>
-        <p className="mt-5 max-w-3xl leading-relaxed text-text">
-          De l&apos;Écusson à Port Marianne, des Beaux-Arts aux communes de la
-          métropole, chaque emplacement demande une évaluation précise. Nous
-          accompagnons également vos projets à Castelnau-le-Lez, Lattes,
-          Juvignac, Pérols, Saint-Jean-de-Védas et dans la région.
-        </p>
-        <div className="mt-9 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {sectors.map((sector) => (
-            <Link
-              key={sector.href}
-              href={sector.href}
-              className="group flex flex-col rounded-3xl bg-bg-gray p-6 ring-1 ring-border transition-shadow hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary"
+        <div className="grid gap-6 lg:grid-cols-[1.2fr_1fr] lg:items-end lg:gap-16">
+          <div>
+            <span className="flex items-center gap-4 text-xs font-semibold uppercase tracking-[0.12em] text-primary sm:text-sm">
+              <span aria-hidden="true" className="h-1 w-8 rounded-full bg-primary" />
+              Une présence locale
+            </span>
+            <h2
+              id="sectors-heading"
+              className="mt-4 max-w-2xl text-3xl font-bold leading-[1.12] tracking-tight text-secondary sm:text-4xl xl:text-5xl"
             >
-              <span className="flex h-11 w-11 items-center justify-center rounded-full bg-primary/10 text-primary">
-                <Icon name="mapPin" className="h-5 w-5" />
-              </span>
-              <h3 className="mt-4 text-lg font-bold text-secondary">
-                {sector.label}
-              </h3>
-              <p className="mt-2 flex-1 text-sm leading-relaxed text-text">
-                {sector.description}
-              </p>
-              <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary group-hover:underline">
-                Découvrir ce secteur
-                <Icon name="arrowRight" className="h-4 w-4" />
-              </span>
-            </Link>
-          ))}
+              Montpellier et nos{" "}
+              <br className="hidden sm:block" />
+              secteurs d&apos;intervention
+            </h2>
+          </div>
+          <div className="max-w-xl lg:pb-1">
+            <p className="text-base leading-relaxed text-text sm:text-lg">
+              De l&apos;Écusson à Port Marianne, nous vous accompagnons à
+              Montpellier, dans sa métropole et dans la région.
+            </p>
+            <p className="mt-4 text-sm leading-relaxed text-secondary sm:text-base">
+              Castelnau-le-Lez · Lattes · Juvignac
+              <br />
+              Pérols · Saint-Jean-de-Védas
+            </p>
+          </div>
         </div>
+      </div>
+
+      <div className="mx-auto mt-9 max-w-[1536px] px-4 lg:mt-11 lg:px-6">
+        <div className="relative h-[280px] overflow-hidden rounded-2xl bg-secondary/10 sm:h-[360px] lg:h-[420px]">
+          <Image
+            src="/images/montpellier-panorama.webp"
+            alt="Vue illustrative de Montpellier, de son architecture et de sa région"
+            fill
+            loading="lazy"
+            sizes="(min-width: 1536px) 1488px, (min-width: 1024px) calc(100vw - 48px), calc(100vw - 32px)"
+            className="object-cover object-center"
+          />
+          <div className="absolute left-4 top-4 flex items-center gap-2 rounded-full bg-secondary px-4 py-2.5 text-xs font-semibold text-white shadow-sm sm:left-7 sm:top-7 sm:gap-3 sm:px-5 sm:text-sm">
+            <Icon name="mapPin" className="h-5 w-5 shrink-0 text-primary" />
+            Montpellier &amp; sa région
+          </div>
+          <div className="absolute right-3 top-16 sm:right-6 sm:top-5">
+            <SectorCompass />
+          </div>
+        </div>
+      </div>
+
+      <div className="relative mx-auto -mt-14 max-w-[1360px] px-6 sm:-mt-16 lg:-mt-20 lg:px-10">
+        <ul className="grid overflow-hidden rounded-2xl bg-white shadow-[0_12px_40px_-16px_rgba(14,47,62,0.25)] sm:grid-cols-2 lg:grid-cols-4">
+          {sectors.map((sector, index) => (
+            <li
+              key={sector.href}
+              className={`relative min-w-0 first:before:absolute first:before:left-6 first:before:top-3 first:before:h-1 first:before:w-10 first:before:rounded-full first:before:bg-primary ${index < 3 ? "border-b border-border" : ""} ${
+                index % 2 === 0 ? "sm:border-r" : ""
+              } ${index === 2 ? "sm:border-b-0" : ""} lg:border-b-0 ${
+                index < 3 ? "lg:border-r" : ""
+              }`}
+            >
+              <Link
+                href={sector.href}
+                aria-label={`Découvrir ${sector.label}`}
+                className="group flex h-full items-start gap-4 px-5 py-7 transition-colors hover:bg-bg-gray/60 focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-secondary motion-reduce:transition-none sm:flex-col sm:gap-4 sm:px-7 lg:px-6 xl:flex-row"
+              >
+                <span
+                  className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full ring-1 sm:h-14 sm:w-14 ${
+                    index === 0
+                      ? "bg-primary/[0.07] text-primary ring-primary/20"
+                      : "bg-secondary/[0.04] text-secondary ring-secondary/10"
+                  }`}
+                >
+                  <SectorIcon kind={sectorIcons[index]} />
+                </span>
+                <div className="flex min-w-0 flex-1 flex-col">
+                  <h3 className="text-lg font-bold leading-snug text-secondary">
+                    {sector.label}
+                  </h3>
+                  <p className="mt-2 flex-1 text-sm leading-relaxed text-text sm:min-h-[52px] sm:text-base">
+                    {sector.description}
+                  </p>
+                  <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary group-hover:underline">
+                    Découvrir
+                    <Icon name="arrowRight" className="h-4 w-4" />
+                  </span>
+                </div>
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );
