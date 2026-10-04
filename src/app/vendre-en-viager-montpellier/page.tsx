@@ -7,6 +7,7 @@ import { Icon } from "@/components/Icon";
 import { SectionButton } from "@/components/SectionButton";
 import { MiniLeadForm } from "@/components/MiniLeadForm";
 import { JsonLd } from "@/components/JsonLd";
+import { SellerWatermark } from "@/components/SellerWatermark";
 import { absoluteUrl, agency, breadcrumbJsonLd, faqJsonLd, realEstateAgentJsonLd } from "@/lib/seo";
 
 const PATH = "/vendre-en-viager-montpellier";
@@ -73,32 +74,35 @@ export default function VendreEnViagerMontpellierPage() {
       ]} />
       <Header />
       <main className="flex-1">
-        <section aria-labelledby="seller-heading" className="border-b border-[#e9e7e0] bg-[#f6f5f0]">
+        <section aria-labelledby="seller-heading" className="relative isolate overflow-hidden bg-secondary">
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 opacity-80">
+            <Image src="/images/hero-background-montpellier.webp" alt="" fill preload sizes="100vw" className="object-cover object-[65%_center] lg:object-center" />
+          </div>
           <div className={`${container} pb-12 pt-6 lg:pb-16 lg:pt-7`}>
-            <nav aria-label="Fil d'Ariane" className="flex flex-wrap items-center gap-2 text-[11px] text-text">
-              <Link href="/" className="rounded-sm hover:text-secondary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">Accueil</Link>
-              <span aria-hidden="true" className="text-text/50">/</span>
+            <nav aria-label="Fil d'Ariane" className="flex flex-wrap items-center gap-2 text-[11px] text-white/65">
+              <Link href="/" className="rounded-sm hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">Accueil</Link>
+              <span aria-hidden="true" className="text-white/35">/</span>
               <span aria-current="page">Vendre en viager à Montpellier</span>
             </nav>
             <div className="mt-9 grid gap-10 lg:mt-12 lg:grid-cols-[1.35fr_1fr] lg:items-start lg:gap-16 xl:gap-24">
               <div className="min-w-0">
-                <p className={eyebrow}><span className="mr-3 text-primary">—</span>Pour les propriétaires</p>
-                <h1 id="seller-heading" className="mt-5 text-[38px] font-semibold leading-[1.13] tracking-tight text-secondary sm:text-5xl xl:text-[54px]">
+                <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-white/70"><span className="mr-3 text-primary">—</span>Pour les propriétaires</p>
+                <h1 id="seller-heading" className="mt-5 text-[38px] font-semibold leading-[1.13] tracking-tight text-white sm:text-5xl xl:text-[54px]">
                   Vendre en viager<br className="hidden sm:block" /> <span className="font-serif font-normal italic">à Montpellier.</span>
                 </h1>
-                <p className="mt-6 max-w-lg text-base leading-[1.8] text-text sm:text-lg">
+                <p className="mt-6 max-w-lg text-base leading-[1.8] text-white/80 sm:text-lg">
                   Compléter votre retraite, financer un projet, aider un proche. Votre logement peut contribuer à la suite de votre vie, avec la possibilité de rester chez vous.
                 </p>
                 <figure className="mt-8 max-w-xl">
                   <div className="relative aspect-[3/1] overflow-hidden rounded-lg sm:aspect-[3.2/1]">
                     <Image src="/images/project-sell.webp" alt="Un couple profite de son cadre de vie" fill preload sizes="(min-width: 1280px) 588px, (min-width: 1024px) 55vw, calc(100vw - 48px)" className="object-cover object-[center_35%]" />
                   </div>
-                  <figcaption className="mt-3 flex items-center gap-3 text-xs leading-relaxed text-text"><span aria-hidden="true" className="h-px w-7 shrink-0 bg-primary" />Préparer l&apos;avenir, en gardant vos repères.</figcaption>
+                  <figcaption className="mt-3 flex items-center gap-3 text-xs leading-relaxed text-white/65"><span aria-hidden="true" className="h-px w-7 shrink-0 bg-primary" />Préparer l&apos;avenir, en gardant vos repères.</figcaption>
                 </figure>
               </div>
               <div id="projet-vendeur" className="min-w-0 scroll-mt-28">
                 <MiniLeadForm appearance="hero" title="Parlons de votre situation" description="Un premier échange pour voir ce qui est possible pour votre logement." subject="Projet vendeur — Viager Montpellier" submitLabel="Être rappelé" />
-                <p className="mt-5 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs text-text">Vous préférez appeler ? <a href={`tel:${agency.telephone}`} className="rounded-sm font-semibold text-secondary hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">{agency.telephoneDisplay}</a></p>
+                <p className="mt-5 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs text-white/70">Vous préférez appeler ? <a href={`tel:${agency.telephone}`} className="rounded-sm font-semibold text-white hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">{agency.telephoneDisplay}</a></p>
               </div>
             </div>
           </div>
@@ -113,7 +117,7 @@ export default function VendreEnViagerMontpellierPage() {
               <Link href="/estimation-viager-montpellier" className={`mt-7 ${textLink}`}>Faire étudier mon bien<Icon name="arrowRight" className="h-4 w-4" /></Link>
             </div>
             <div>
-              <div className="rounded-xl bg-[#f6f5f0] px-6 py-8 sm:px-9 sm:py-10">
+              <div className="rounded-xl border border-[#dce9ee] bg-[#f0f5f7] px-6 py-8 sm:px-9 sm:py-10">
                 <div className="grid gap-9 sm:grid-cols-[0.8fr_1.2fr] sm:gap-10">
                   <div>
                     <p className="text-xs text-text">À la signature</p>
@@ -121,7 +125,7 @@ export default function VendreEnViagerMontpellierPage() {
                     <h3 className="mt-5 text-xl font-semibold text-secondary">Le bouquet</h3>
                     <p className="mt-3 text-sm leading-[1.8] text-text">Une somme versée au départ. Elle est facultative et se négocie avec la rente.</p>
                   </div>
-                  <div className="border-t border-[#deddd5] pt-7 sm:border-l sm:border-t-0 sm:pl-9 sm:pt-0">
+                  <div className="border-t border-secondary/15 pt-7 sm:border-l sm:border-t-0 sm:pl-9 sm:pt-0">
                     <p className="text-xs text-text">Dans le temps</p>
                     <div aria-hidden="true" className="mt-5 flex h-16 items-center gap-2.5">
                       {[0, 1, 2].map(i => <span key={i} className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-secondary/25 font-serif text-xl text-secondary">€</span>)}
@@ -131,7 +135,7 @@ export default function VendreEnViagerMontpellierPage() {
                     <p className="mt-3 text-sm leading-[1.8] text-text">Un revenu versé votre vie durant, selon la périodicité convenue dans l&apos;acte.</p>
                   </div>
                 </div>
-                <p className="mt-7 border-t border-[#deddd5] pt-5 text-xs leading-[1.8] text-text">Les montants dépendent notamment de la valeur du logement, de votre âge et du droit d&apos;occupation conservé.</p>
+                <p className="mt-7 border-t border-secondary/15 pt-5 text-xs leading-[1.8] text-text">Les montants dépendent notamment de la valeur du logement, de votre âge et du droit d&apos;occupation conservé.</p>
               </div>
               <p className="mt-4 text-xs leading-relaxed text-text">Pour approfondir : <a href="https://paris.notaires.fr/fr/actualites/le-mot-du-mois-le-bouquet" className="rounded-sm underline underline-offset-4 hover:text-secondary">le bouquet expliqué par les notaires</a>.</p>
             </div>
@@ -161,23 +165,26 @@ export default function VendreEnViagerMontpellierPage() {
           </div>
         </section>
 
-        <section aria-labelledby="seller-steps-heading" className="bg-[#f6f5f0] py-16 lg:py-24">
+        <section aria-labelledby="seller-steps-heading" className="relative isolate overflow-hidden bg-secondary py-16 lg:py-24">
+          <div aria-hidden="true" className="pointer-events-none absolute -bottom-24 -right-32 -z-10 w-[620px] max-w-none text-white opacity-[0.09] lg:-right-12 lg:w-[760px]">
+            <SellerWatermark className="h-auto w-full" />
+          </div>
           <div className={container}>
             <div className="grid gap-5 lg:grid-cols-[1.2fr_0.8fr] lg:items-end lg:gap-16">
               <div>
-                <p className={eyebrow}><span className="mr-3 text-primary">03</span>Avancer avec un conseiller</p>
-                <h2 id="seller-steps-heading" className={`mt-5 ${heading}`}>De votre première question<br />à la signature.</h2>
+                <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-white/65"><span className="mr-3 text-primary">03</span>Avancer avec un conseiller</p>
+                <h2 id="seller-steps-heading" className="mt-5 text-3xl font-semibold leading-[1.2] tracking-tight text-white sm:text-4xl">De votre première question<br />à la signature.</h2>
               </div>
-              <p className="max-w-sm text-base leading-[1.8] text-text">Vous pouvez commencer sans avoir choisi de formule ni réuni tous vos documents.</p>
+              <p className="max-w-sm text-base leading-[1.8] text-white/75">Vous pouvez commencer sans avoir choisi de formule ni réuni tous vos documents.</p>
             </div>
             <ol className="mt-10 grid gap-8 lg:mt-12 lg:grid-cols-3 lg:gap-10">
               {steps.map((step, index) => (
-                <li key={step.title} className="relative border-t border-secondary/20 pt-7">
+                <li key={step.title} className="relative border-t border-white/20 pt-7">
                   <span aria-hidden="true" className="absolute -top-1 left-0 h-2 w-2 rounded-full bg-primary" />
-                  <span className="text-xs font-medium text-text">0{index + 1}</span>
-                  <h3 className="mt-3 max-w-xs text-xl font-semibold leading-snug text-secondary">{step.title}</h3>
-                  <p className="mt-4 text-sm leading-[1.8] text-text">{step.description}</p>
-                  <p className="mt-5 text-xs text-secondary">{step.note}</p>
+                  <span className="text-xs font-medium text-primary">0{index + 1}</span>
+                  <h3 className="mt-3 max-w-xs text-xl font-semibold leading-snug text-white">{step.title}</h3>
+                  <p className="mt-4 text-sm leading-[1.8] text-white/75">{step.description}</p>
+                  <p className="mt-5 text-xs text-white/85">{step.note}</p>
                 </li>
               ))}
             </ol>
