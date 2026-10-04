@@ -19,6 +19,15 @@ export function absoluteUrl(path: string) {
   return `${SITE_URL}${path}`;
 }
 
+const administrativeAreas = new Set(["Hérault", "Gard"]);
+
+function servedAreaJsonLd(name: string) {
+  return {
+    "@type": administrativeAreas.has(name) ? "AdministrativeArea" : "City",
+    name,
+  };
+}
+
 export function realEstateAgentJsonLd({
   path,
   areaServed,
@@ -31,10 +40,15 @@ export function realEstateAgentJsonLd({
   return {
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
+    "@id": absoluteUrl("/#agence"),
     name: agency.name,
     description,
-    url: absoluteUrl(path),
+    url: absoluteUrl("/"),
+    mainEntityOfPage: absoluteUrl(path),
+    logo: absoluteUrl("/apple-icon"),
+    image: absoluteUrl("/images/hero-home.png"),
     telephone: agency.telephone,
+    email: agency.email,
     address: {
       "@type": "PostalAddress",
       streetAddress: agency.street,
@@ -44,8 +58,21 @@ export function realEstateAgentJsonLd({
       addressCountry: agency.country,
     },
     areaServed: Array.isArray(areaServed)
-      ? areaServed.map((name) => ({ "@type": "City", name }))
-      : { "@type": "City", name: areaServed },
+      ? areaServed.map(servedAreaJsonLd)
+      : servedAreaJsonLd(areaServed),
+  };
+}
+
+export function webSiteJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": absoluteUrl("/#website"),
+    name: "Viager Montpellier",
+    alternateName: agency.name,
+    url: absoluteUrl("/"),
+    inLanguage: "fr-FR",
+    publisher: { "@id": absoluteUrl("/#agence") },
   };
 }
 

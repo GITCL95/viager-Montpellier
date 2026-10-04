@@ -6,12 +6,6 @@ import { Icon } from "./Icon";
 const footerLinkClass =
   "rounded-sm transition-colors hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary motion-reduce:transition-none";
 
-const socialLinks = [
-  { icon: "facebook", label: "Facebook", href: "#" },
-  { icon: "instagram", label: "Instagram", href: "#" },
-  { icon: "linkedin", label: "LinkedIn", href: "#" },
-] as const;
-
 export function Footer() {
   return (
     <footer className="bg-[#06232f] pt-14 text-[#b6cbd4] lg:pt-10">
@@ -39,18 +33,6 @@ export function Footer() {
             Votre agence de confiance pour vendre ou acheter un bien en
             viager à Montpellier et dans sa métropole.
           </p>
-          <div className="mt-6 flex items-center gap-3">
-            {socialLinks.map((social) => (
-              <a
-                key={social.icon}
-                href={social.href}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/65 text-white transition-colors hover:border-primary hover:bg-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary motion-reduce:transition-none"
-                aria-label={social.label}
-              >
-                <Icon name={social.icon} className="h-4 w-4" />
-              </a>
-            ))}
-          </div>
         </div>
 
         <div className="min-w-0 border-t border-[#456779]/45 pt-8 sm:border-l sm:border-t-0 sm:px-8 sm:pt-0">

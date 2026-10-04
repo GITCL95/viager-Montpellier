@@ -19,11 +19,12 @@ import {
   agency,
   faqJsonLd,
   realEstateAgentJsonLd,
+  webSiteJsonLd,
 } from "@/lib/seo";
 
 const TITLE = "Agence viager Montpellier | Patrimoine Cardinal";
 const DESCRIPTION =
-  "Votre agence viager à Montpellier : choisissez votre parcours vendeur ou acheteur, découvrez les formules et demandez une estimation gratuite.";
+  `Agence viager à Montpellier : vendez, achetez ou faites estimer votre bien gratuitement. Contactez Patrimoine Cardinal au ${agency.telephoneDisplay}.`;
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -55,14 +56,14 @@ export default function Home() {
   return (
     <>
       <JsonLd
-        data={{
-          ...realEstateAgentJsonLd({
+        data={[
+          realEstateAgentJsonLd({
             path: "/",
             areaServed: ["Montpellier", "Hérault", "Gard"],
             description: DESCRIPTION,
           }),
-          email: agency.email,
-        }}
+          webSiteJsonLd(),
+        ]}
       />
       <JsonLd data={faqJsonLd(homeFaqs)} />
       <Header />
