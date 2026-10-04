@@ -6,9 +6,15 @@ import { Icon } from "./Icon";
 export function Hero() {
   return (
     <section id="accueil" className="relative overflow-hidden bg-secondary">
-      <div className="pointer-events-none absolute inset-0 opacity-20">
-        <div className="absolute -left-32 top-10 h-72 w-72 rounded-full bg-primary blur-3xl" />
-        <div className="absolute right-0 top-1/3 h-96 w-96 rounded-full bg-white blur-3xl" />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+        <Image
+          src="/images/hero-background-montpellier.webp"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover object-[65%_center] lg:object-center"
+          preload
+        />
       </div>
 
       <div className="relative mx-auto grid max-w-7xl gap-12 px-6 py-16 lg:grid-cols-2 lg:items-center lg:px-10 lg:py-24">
