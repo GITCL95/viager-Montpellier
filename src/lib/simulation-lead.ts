@@ -1,20 +1,24 @@
 import { calculateViager, type ViagerInputs } from "./viager-calculation";
 
 const FORM_ENDPOINT = "https://formspree.io/f/xgogavvr";
+const CITY_LETTER_PATTERN = new RegExp("\\p{L}", "u");
 
 export type SimulationLeadInputs = {
   email: string;
   phone: string;
+  city: string;
   calculation: ViagerInputs;
 };
 
 export async function submitSimulationLead({
   email,
   phone,
+  city,
   calculation,
 }: SimulationLeadInputs): Promise<void> {
   const trimmedEmail = typeof email === "string" ? email.trim() : "";
   const trimmedPhone = typeof phone === "string" ? phone.trim() : "";
+  const trimmedCity = typeof city === "string" ? city.trim() : "";
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedEmail)) {
     throw new Error("Renseignez une adresse e-mail valide.");
   }
@@ -25,6 +29,13 @@ export async function submitSimulationLead({
     phoneDigits.length > 15
   ) {
     throw new Error("Renseignez un numéro de téléphone valide, de 8 à 15 chiffres.");
+  }
+  if (
+    trimmedCity.length < 2 ||
+    trimmedCity.length > 120 ||
+    !CITY_LETTER_PATTERN.test(trimmedCity)
+  ) {
+    throw new Error("Renseignez la ville du bien, de 2 à 120 caractères et avec au moins une lettre.");
   }
 
   const result = calculateViager(calculation);
@@ -41,6 +52,7 @@ export async function submitSimulationLead({
     .map(({ age, sex }, index) => `Vendeur ${index + 1} : ${age} ans (${sex})`)
     .join("\n");
   const summary = [
+    `Ville du bien : ${trimmedCity}`,
     `Valeur du bien : ${money.format(calculation.propertyValue)}`,
     `Formule : viager ${calculation.occupation === "occupe" ? "occupé" : "libre"}`,
     sellersSummary,
@@ -58,6 +70,7 @@ export async function submitSimulationLead({
   data.set("request_type", "simulation");
   data.set("email", trimmedEmail);
   data.set("phone", trimmedPhone);
+  data.set("property_city", trimmedCity);
   data.set("source", typeof window !== "undefined" ? window.location.href : "");
   data.set("property_value", String(calculation.propertyValue));
   data.set("occupation", calculation.occupation);

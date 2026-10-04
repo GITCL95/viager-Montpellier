@@ -23,6 +23,7 @@ export function ViagerSimulator() {
   const [calculation, setCalculation] = useState<ViagerInputs | null>(null);
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [city, setCity] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -63,7 +64,7 @@ export function ViagerSimulator() {
     setIsSubmitting(true);
     setError("");
     try {
-      await submitSimulationLead({ email, phone, calculation });
+      await submitSimulationLead({ email, phone, city, calculation });
       setStep(3);
     } catch (cause) {
       setError(cause instanceof Error ? cause.message : "Votre demande n'a pas pu être envoyée. Réessayez pour accéder à votre résultat.");
@@ -140,11 +141,11 @@ export function ViagerSimulator() {
             {step === 1 ? <button type="button" onClick={() => { setStep(0); setError(""); }} className="min-h-12 rounded-sm text-sm underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-primary">Retour</button> : null}
             <button type="submit" className={`${buttonClass} flex-1`}>Continuer<Icon name="arrowRight" className="h-4 w-4" /></button>
           </div>
-          <p className="mt-4 text-[11px] leading-relaxed text-text">Résultat après saisie de votre e-mail et de votre téléphone · Sans engagement.</p>
+          <p className="mt-4 text-[11px] leading-relaxed text-text">Résultat après saisie de votre e-mail, de votre téléphone et de la ville du bien · Sans engagement.</p>
         </form>
       ) : step === 2 ? (
         <form onSubmit={submitContact} aria-busy={isSubmitting} className="px-6 pb-6 sm:px-7 sm:pb-7">
-          <p className="mt-4 text-sm leading-[1.8] text-text">Renseignez votre e-mail et votre téléphone pour découvrir votre bouquet et votre rente. Notre équipe pourra vous recontacter pour préciser votre projet.</p>
+          <p className="mt-4 text-sm leading-[1.8] text-text">Renseignez votre e-mail, votre téléphone et la ville du bien pour découvrir votre bouquet et votre rente. Notre équipe pourra vous recontacter pour préciser votre projet.</p>
           <div className="mt-6 grid gap-4">
             <label className="grid gap-2 text-xs font-medium">Votre e-mail
               <input required disabled={isSubmitting} type="email" name="email" autoComplete="email" maxLength={254} value={email} onChange={event => { setEmail(event.target.value); setError(""); }} placeholder="Adresse e-mail" aria-describedby="simulation-contact-note" className={inputClass} />
@@ -152,13 +153,16 @@ export function ViagerSimulator() {
             <label className="grid gap-2 text-xs font-medium">Votre téléphone
               <input required disabled={isSubmitting} type="tel" name="phone" autoComplete="tel" inputMode="tel" maxLength={24} value={phone} onChange={event => { setPhone(event.target.value); setError(""); }} placeholder="Numéro de téléphone" aria-describedby="simulation-contact-note" className={inputClass} />
             </label>
+            <label className="grid gap-2 text-xs font-medium">Ville du bien
+              <input required disabled={isSubmitting} type="text" name="property_city" autoComplete="address-level2" minLength={2} maxLength={120} value={city} onChange={event => { setCity(event.target.value); setError(""); }} placeholder="Ex. Montpellier, Castelnau-le-Lez" aria-describedby="simulation-contact-note" className={inputClass} />
+            </label>
           </div>
           {error ? <p role="alert" className="mt-4 text-sm leading-relaxed text-red-700">{error}</p> : null}
           <div className="mt-6 flex items-center gap-4">
             <button type="button" disabled={isSubmitting} onClick={() => { setStep(1); setError(""); }} className="min-h-12 rounded-sm text-sm underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-primary disabled:opacity-60">Retour</button>
             <button type="submit" disabled={isSubmitting} className={`${buttonClass} flex-1 disabled:cursor-wait disabled:opacity-70`}>{isSubmitting ? "Envoi en cours…" : "Afficher mon résultat"}<Icon name="arrowRight" className="h-4 w-4 shrink-0" /></button>
           </div>
-          <p id="simulation-contact-note" className="mt-4 text-[11px] leading-[1.8] text-text">En affichant votre résultat, vous transmettez vos coordonnées et les informations de votre simulation à Viager Montpellier pour traiter votre demande et vous recontacter. L&apos;envoi est assuré par Formspree. Sans engagement.</p>
+          <p id="simulation-contact-note" className="mt-4 text-[11px] leading-[1.8] text-text">En affichant votre résultat, vous transmettez votre e-mail, votre téléphone, la ville du bien et les informations de votre simulation à Viager Montpellier pour traiter votre demande et vous recontacter. L&apos;envoi est assuré par Formspree. Sans engagement.</p>
         </form>
       ) : result && calculation ? (
         <div className="px-6 pb-6 sm:px-7 sm:pb-7">
