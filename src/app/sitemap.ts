@@ -19,6 +19,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/viager-sete", priority: 0.7 },
     { path: "/viager-nimes", priority: 0.7 },
     { path: "/viager-beziers", priority: 0.7 },
+    { path: "/viager-palavas-les-flots", priority: 0.7 },
+    { path: "/viager-agde", priority: 0.7 },
   ];
 
   return routes.map((route) => ({

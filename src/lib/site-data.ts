@@ -26,6 +26,8 @@ export const sectorLinks = [
   { label: "Viager Sète", href: "/viager-sete" },
   { label: "Viager Nîmes", href: "/viager-nimes" },
   { label: "Viager Béziers", href: "/viager-beziers" },
+  { label: "Viager Palavas-les-Flots", href: "/viager-palavas-les-flots" },
+  { label: "Viager Agde", href: "/viager-agde" },
 ];
 
 export const heroStats = [
