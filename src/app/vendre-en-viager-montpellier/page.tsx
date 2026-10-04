@@ -3,9 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { Faq } from "@/components/Faq";
-import { Icon, type IconName } from "@/components/Icon";
-import { FormulaIllustration } from "@/components/FormulaIllustrations";
+import { Icon } from "@/components/Icon";
 import { SectionButton } from "@/components/SectionButton";
 import { MiniLeadForm } from "@/components/MiniLeadForm";
 import { JsonLd } from "@/components/JsonLd";
@@ -13,8 +11,7 @@ import { absoluteUrl, agency, breadcrumbJsonLd, faqJsonLd, realEstateAgentJsonLd
 
 const PATH = "/vendre-en-viager-montpellier";
 const TITLE = "Vendre en viager à Montpellier : étapes et accompagnement";
-const DESCRIPTION =
-  `Vendre en viager à Montpellier avec Patrimoine Cardinal : estimation gratuite, choix de la formule et accompagnement. Appelez le ${agency.telephoneDisplay}.`;
+const DESCRIPTION = `Vendre en viager à Montpellier avec Patrimoine Cardinal : estimation gratuite, choix de la formule et accompagnement. Appelez le ${agency.telephoneDisplay}.`;
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -34,47 +31,37 @@ export const metadata: Metadata = {
 
 const faqs = [
   {
-    question: "Puis-je vendre en viager et continuer à vivre dans mon logement ?",
-    answer:
-      "Oui, un viager occupé permet de conserver les droits prévus au contrat. Un droit d'usage et d'habitation ne donne pas les mêmes possibilités qu'un usufruit : le choix doit être expliqué et formalisé avec le notaire.",
+    question: "Comment savoir ce que mon bien peut me rapporter ?",
+    answer: "L'étude part de la valeur immobilière de votre logement à Montpellier, de votre âge et des droits d'occupation conservés. Bouquet et rente sont examinés ensemble, en tenant compte de vos besoins. Une estimation permet de comparer des conditions concrètes, sans vous engager à vendre.",
   },
   {
-    question: "Le bouquet est-il obligatoire ?",
-    answer:
-      "Non. Cette partie du prix payée à la signature est librement négociée. Son montant et la rente doivent être étudiés ensemble, selon la valeur du logement, l'occupation et la situation des vendeurs.",
+    question: "Puis-je rester chez moi ou louer mon logement ?",
+    answer: "Un viager occupé peut vous permettre de rester dans votre logement. Un droit d'usage et d'habitation réserve une occupation personnelle ; un usufruit permet aussi de louer le bien. Ces droits, ainsi que les conditions d'un éventuel départ, doivent être précisés dans l'acte notarié.",
   },
   {
-    question: "Quels documents faut-il préparer ?",
-    answer:
-      "Commencez par le titre de propriété, les informations de surface, les diagnostics disponibles et, en copropriété, les charges et documents de l'immeuble. Le conseiller et le notaire préciseront les pièces nécessaires selon votre logement et votre situation.",
+    question: "Quelles protections prévoir pour la rente et mon conjoint ?",
+    answer: "Avant la signature, le notaire explique les garanties de paiement, l'indexation éventuelle de la rente et les dispositions pour votre conjoint. Une clause résolutoire peut être prévue en cas d'impayés. Ses effets et les démarches nécessaires dépendent du contrat : les protections doivent être examinées pour votre situation.",
   },
   {
-    question: "Quelles protections prévoir si la rente n'est pas payée ?",
-    answer:
-      "Le notaire étudie les garanties et les clauses adaptées, notamment une clause résolutoire. Leurs effets et leur mise en œuvre dépendent de l'acte : il faut les examiner avant la signature et vérifier la capacité de paiement de l'acquéreur.",
+    question: "Qui paie les charges et les travaux après la vente ?",
+    answer: "La répartition doit être précisée dans l'acte. Elle dépend notamment du droit conservé : usufruit et droit d'usage et d'habitation ne créent pas les mêmes obligations. Demandez une explication des charges, taxes et travaux avant de vous engager.",
+  },
+  {
+    question: "Quels documents préparer pour le premier échange ?",
+    answer: "Pour commencer, indiquez la commune, le type de logement, sa surface et votre souhait de rester ou de partir. Le titre de propriété, les diagnostics et les documents de copropriété permettront ensuite de préparer le dossier. Vous pouvez nous contacter avant d'avoir réuni toutes les pièces.",
   },
 ];
 
-const options = [
-  { title: "Viager occupé", situation: "Rester dans votre logement", image: "/images/project-sell.webp", description: "Votre priorité est de conserver votre cadre de vie. Étudiez les droits d'occupation, la protection du conjoint et les conditions d'un éventuel départ.", href: "/viager-occupe-montpellier", label: "Étudier le viager occupé" },
-  { title: "Viager libre", situation: "Libérer le logement", image: "/images/project-buy.webp", description: "Vous prévoyez un déménagement ou vendez un logement déjà vacant. Comparez les modalités d'une vente sans occupation conservée.", href: "/viager-libre-montpellier", label: "Comprendre le viager libre" },
-  { title: "Vente à terme", situation: "Fixer la durée des paiements", image: null, description: "Vous recherchez un paiement échelonné sur une durée convenue. La vente à terme mérite une comparaison avec la rente viagère.", href: "/vente-a-terme-montpellier", label: "Découvrir la vente à terme" },
+const steps = [
+  { title: "Votre situation d'abord", description: "Votre logement, vos besoins de revenus, votre souhait de rester ou de partir. Nous prenons le temps de comprendre ce qui compte pour vous.", note: "Un échange sans engagement" },
+  { title: "Une proposition expliquée", description: "Nous évaluons le bien et comparons les conditions envisageables. Avec votre accord, nous préparons la vente et recherchons un acquéreur.", note: "Bouquet, rente et occupation" },
+  { title: "Un acte préparé avec le notaire", description: "Prix, droits conservés, charges et garanties : le notaire précise les engagements de chacun avant que vous décidiez de signer.", note: "Des conditions écrites" },
 ];
 
-const steps: { title: string; description: string; icon: IconName }[] = [
-  { title: "Évaluer et comparer", description: "Nous étudions votre logement et vos objectifs pour comparer les conditions envisageables. La valeur immobilière et le choix d'occupation servent de base à l'estimation.", icon: "calculator" },
-  { title: "Préparer la vente", description: "Le dossier décrit le bien et les conditions proposées. Avec votre accord, l'agence accompagne la recherche d'un acquéreur et l'examen de son projet de paiement.", icon: "search" },
-  { title: "Formaliser chez le notaire", description: "Les parties précisent prix, rente, occupation et garanties. Le notaire prépare l'acte et explique les conséquences des clauses avant votre engagement.", icon: "shield" },
-];
-
-const documents = [
-  { title: "Votre propriété", description: "Titre de propriété, identité des propriétaires et situation éventuelle d'indivision." },
-  { title: "Votre logement", description: "Surface, plans disponibles, travaux réalisés et particularités du logement." },
-  { title: "Les diagnostics", description: "Diagnostics immobiliers à vérifier et à compléter selon le bien." },
-  { title: "La copropriété", description: "Règlement, charges, procès-verbaux et informations sur les travaux." },
-];
-
-const buttonClass = "inline-flex min-h-14 items-center justify-center gap-4 rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-primary-dark focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary motion-reduce:transition-none sm:text-base";
+const container = "mx-auto max-w-[1200px] px-6 lg:px-10";
+const eyebrow = "text-[11px] font-medium uppercase tracking-[0.16em] text-text";
+const textLink = "inline-flex items-center gap-3 rounded-sm text-sm font-semibold text-secondary underline decoration-primary/50 underline-offset-8 transition-colors hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary";
+const heading = "text-3xl font-semibold leading-[1.2] tracking-tight text-secondary sm:text-4xl";
 
 export default function VendreEnViagerMontpellierPage() {
   return (
@@ -86,158 +73,139 @@ export default function VendreEnViagerMontpellierPage() {
       ]} />
       <Header />
       <main className="flex-1">
-        <section aria-labelledby="seller-heading" className="relative isolate overflow-hidden bg-secondary">
-          <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
-            <Image src="/images/hero-background-montpellier.webp" alt="" fill sizes="100vw" preload className="object-cover object-[65%_center] lg:object-center" />
-          </div>
-          <div className="mx-auto max-w-7xl px-6 pb-12 pt-7 lg:px-10 lg:pb-16 lg:pt-9">
-            <nav aria-label="Fil d'Ariane" className="flex flex-wrap items-center gap-2 text-xs text-white/65">
-              <Link href="/" className="rounded-sm hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">Accueil</Link>
-              <span aria-hidden="true">/</span>
+        <section aria-labelledby="seller-heading" className="border-b border-[#e9e7e0] bg-[#f6f5f0]">
+          <div className={`${container} pb-12 pt-6 lg:pb-16 lg:pt-7`}>
+            <nav aria-label="Fil d'Ariane" className="flex flex-wrap items-center gap-2 text-[11px] text-text">
+              <Link href="/" className="rounded-sm hover:text-secondary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">Accueil</Link>
+              <span aria-hidden="true" className="text-text/50">/</span>
               <span aria-current="page">Vendre en viager à Montpellier</span>
             </nav>
-            <div className="mt-8 grid gap-9 lg:mt-10 lg:grid-cols-[1.2fr_0.95fr] lg:items-center lg:gap-12 xl:gap-20">
+            <div className="mt-9 grid gap-10 lg:mt-12 lg:grid-cols-[1.35fr_1fr] lg:items-start lg:gap-16 xl:gap-24">
               <div className="min-w-0">
-                <span className="flex items-center gap-3 text-xs font-semibold uppercase tracking-wide text-primary sm:text-sm">
-                  <span aria-hidden="true" className="h-0.5 w-8 bg-primary" />Votre parcours vendeur
-                </span>
-                <h1 id="seller-heading" className="mt-5 max-w-2xl text-4xl font-bold leading-[1.08] tracking-tight text-white sm:text-5xl xl:text-[60px]">
-                  Vendre votre bien<br className="hidden sm:block" /> en viager<br className="hidden sm:block" /> à Montpellier<span className="text-primary">.</span>
+                <p className={eyebrow}><span className="mr-3 text-primary">—</span>Pour les propriétaires</p>
+                <h1 id="seller-heading" className="mt-5 text-[38px] font-semibold leading-[1.13] tracking-tight text-secondary sm:text-5xl xl:text-[54px]">
+                  Vendre en viager<br className="hidden sm:block" /> <span className="font-serif font-normal italic">à Montpellier.</span>
                 </h1>
-                <p className="mt-6 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg">
-                  Compléter vos revenus, disposer d&apos;un capital ou organiser un changement de logement : nous vous aidons à préparer votre vente et à examiner les conditions qui comptent pour vous.
+                <p className="mt-6 max-w-lg text-base leading-[1.8] text-text sm:text-lg">
+                  Compléter votre retraite, financer un projet, aider un proche. Votre logement peut contribuer à la suite de votre vie, avec la possibilité de rester chez vous.
                 </p>
-                <ul className="mt-7 space-y-3 border-t border-white/20 pt-6 text-sm text-white/90 sm:text-base">
-                  {["Une estimation gratuite et sans engagement", "Les formules expliquées selon votre situation", "Un accompagnement jusqu'à la signature"].map(point => (
-                    <li key={point} className="flex items-start gap-3"><Icon name="check" className="mt-0.5 h-5 w-5 shrink-0 text-primary" />{point}</li>
-                  ))}
-                </ul>
-                <a href={`tel:${agency.telephone}`} className="mt-8 inline-flex items-center gap-3 rounded-sm text-2xl font-bold text-white hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:text-3xl">
-                  <Icon name="phone" className="h-6 w-6 shrink-0 text-primary" />{agency.telephoneDisplay}
-                </a>
+                <figure className="mt-8 max-w-xl">
+                  <div className="relative aspect-[3/1] overflow-hidden rounded-lg sm:aspect-[3.2/1]">
+                    <Image src="/images/project-sell.webp" alt="Un couple profite de son cadre de vie" fill preload sizes="(min-width: 1280px) 588px, (min-width: 1024px) 55vw, calc(100vw - 48px)" className="object-cover object-[center_35%]" />
+                  </div>
+                  <figcaption className="mt-3 flex items-center gap-3 text-xs leading-relaxed text-text"><span aria-hidden="true" className="h-px w-7 shrink-0 bg-primary" />Préparer l&apos;avenir, en gardant vos repères.</figcaption>
+                </figure>
               </div>
               <div id="projet-vendeur" className="min-w-0 scroll-mt-28">
-                <MiniLeadForm appearance="hero" title="Parlons de votre vente" description="Laissez vos coordonnées : un conseiller vous recontacte pour préparer votre projet de vente en viager." subject="Projet vendeur — Viager Montpellier" submitLabel="Parlons de mon projet" />
+                <MiniLeadForm appearance="hero" title="Parlons de votre situation" description="Un premier échange pour voir ce qui est possible pour votre logement." subject="Projet vendeur — Viager Montpellier" submitLabel="Être rappelé" />
+                <p className="mt-5 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs text-text">Vous préférez appeler ? <a href={`tel:${agency.telephone}`} className="rounded-sm font-semibold text-secondary hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">{agency.telephoneDisplay}</a></p>
               </div>
             </div>
           </div>
         </section>
 
-        <section aria-labelledby="seller-options-heading" className="bg-[#f7f7f5] py-16 lg:py-20">
-          <div className="mx-auto max-w-7xl px-6 lg:px-10">
-            <div className="grid gap-6 lg:grid-cols-[1.2fr_1fr] lg:items-end lg:gap-16">
+        <section aria-labelledby="seller-income-heading" className="bg-white py-16 lg:py-24">
+          <div className={`${container} grid gap-10 lg:grid-cols-[0.8fr_1.25fr] lg:items-center lg:gap-20`}>
+            <div>
+              <p className={eyebrow}><span className="mr-3 text-primary">01</span>Comprendre ce que vous recevez</p>
+              <h2 id="seller-income-heading" className={`mt-5 ${heading}`}>Du patrimoine<br />aux revenus.</h2>
+              <p className="mt-5 max-w-sm text-base leading-[1.8] text-text">Le prix peut associer un capital au départ et une rente dans le temps. Leur équilibre se construit à partir de votre bien et de vos besoins.</p>
+              <Link href="/estimation-viager-montpellier" className={`mt-7 ${textLink}`}>Faire étudier mon bien<Icon name="arrowRight" className="h-4 w-4" /></Link>
+            </div>
+            <div>
+              <div className="rounded-xl bg-[#f6f5f0] px-6 py-8 sm:px-9 sm:py-10">
+                <div className="grid gap-9 sm:grid-cols-[0.8fr_1.2fr] sm:gap-10">
+                  <div>
+                    <p className="text-xs text-text">À la signature</p>
+                    <div aria-hidden="true" className="mt-5 flex h-16 w-16 items-center justify-center rounded-full border border-primary/35 bg-primary/[0.06] font-serif text-4xl text-primary">€</div>
+                    <h3 className="mt-5 text-xl font-semibold text-secondary">Le bouquet</h3>
+                    <p className="mt-3 text-sm leading-[1.8] text-text">Une somme versée au départ. Elle est facultative et se négocie avec la rente.</p>
+                  </div>
+                  <div className="border-t border-[#deddd5] pt-7 sm:border-l sm:border-t-0 sm:pl-9 sm:pt-0">
+                    <p className="text-xs text-text">Dans le temps</p>
+                    <div aria-hidden="true" className="mt-5 flex h-16 items-center gap-2.5">
+                      {[0, 1, 2].map(i => <span key={i} className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-secondary/25 font-serif text-xl text-secondary">€</span>)}
+                      <span className="text-xl tracking-[0.12em] text-primary">···</span>
+                    </div>
+                    <h3 className="mt-5 text-xl font-semibold text-secondary">La rente</h3>
+                    <p className="mt-3 text-sm leading-[1.8] text-text">Un revenu versé votre vie durant, selon la périodicité convenue dans l&apos;acte.</p>
+                  </div>
+                </div>
+                <p className="mt-7 border-t border-[#deddd5] pt-5 text-xs leading-[1.8] text-text">Les montants dépendent notamment de la valeur du logement, de votre âge et du droit d&apos;occupation conservé.</p>
+              </div>
+              <p className="mt-4 text-xs leading-relaxed text-text">Pour approfondir : <a href="https://paris.notaires.fr/fr/actualites/le-mot-du-mois-le-bouquet" className="rounded-sm underline underline-offset-4 hover:text-secondary">le bouquet expliqué par les notaires</a>.</p>
+            </div>
+          </div>
+        </section>
+
+        <section aria-labelledby="seller-choices-heading" className="bg-white">
+          <div className={`${container} grid gap-10 border-t border-border py-16 lg:grid-cols-[0.8fr_1.25fr] lg:gap-20 lg:py-24`}>
+            <div>
+              <p className={eyebrow}><span className="mr-3 text-primary">02</span>Votre lieu de vie</p>
+              <h2 id="seller-choices-heading" className={`mt-5 ${heading}`}>La suite se prépare<br /><span className="font-serif font-normal italic">à vos conditions.</span></h2>
+              <p className="mt-5 max-w-sm text-base leading-[1.8] text-text">Rester dans votre quartier ou ouvrir un nouveau chapitre : ce choix guide les conditions de votre vente.</p>
+            </div>
+            <div className="divide-y divide-border">
+              <div className="pb-8">
+                <h3 className="text-xl font-semibold text-secondary sm:text-2xl">« Je veux continuer à vivre chez moi. »</h3>
+                <p className="mt-4 text-base leading-[1.8] text-text">En viager occupé, vous pouvez conserver un droit d&apos;occupation. Nous étudions aussi la place de votre conjoint et les conditions d&apos;un éventuel départ du logement.</p>
+                <Link href="/viager-occupe-montpellier" className={`mt-5 ${textLink}`}>Comprendre le viager occupé<Icon name="arrowRight" className="h-4 w-4" /></Link>
+              </div>
+              <div className="py-8">
+                <h3 className="text-xl font-semibold text-secondary sm:text-2xl">« Je suis prêt à changer de logement. »</h3>
+                <p className="mt-4 text-base leading-[1.8] text-text">Si le bien est libéré à la vente, l&apos;acquéreur peut en disposer dès la signature. Le viager libre permet d&apos;étudier un paiement en capital et en rente sans occupation conservée.</p>
+                <Link href="/viager-libre-montpellier" className={`mt-5 ${textLink}`}>Comprendre le viager libre<Icon name="arrowRight" className="h-4 w-4" /></Link>
+              </div>
+              <p className="pt-6 text-sm leading-[1.8] text-text">Vous préférez une durée de paiement définie ? La <Link href="/vente-a-terme-montpellier" className="rounded-sm font-medium text-secondary underline decoration-primary/50 underline-offset-4 hover:text-primary">vente à terme</Link> peut aussi être comparée à votre projet.</p>
+            </div>
+          </div>
+        </section>
+
+        <section aria-labelledby="seller-steps-heading" className="bg-[#f6f5f0] py-16 lg:py-24">
+          <div className={container}>
+            <div className="grid gap-5 lg:grid-cols-[1.2fr_0.8fr] lg:items-end lg:gap-16">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-wide text-primary sm:text-sm">Choisir votre parcours</p>
-                <h2 id="seller-options-heading" className="mt-4 text-3xl font-bold leading-tight tracking-tight text-secondary sm:text-4xl lg:text-5xl">Votre situation,<br />votre formule.</h2>
+                <p className={eyebrow}><span className="mr-3 text-primary">03</span>Avancer avec un conseiller</p>
+                <h2 id="seller-steps-heading" className={`mt-5 ${heading}`}>De votre première question<br />à la signature.</h2>
               </div>
-              <p className="max-w-xl text-base leading-relaxed text-text sm:text-lg">Avant de parler de prix, précisez vos besoins : continuer à habiter le bien, protéger votre conjoint, recevoir un capital ou privilégier des revenus réguliers. Ces choix orientent l&apos;étude.</p>
+              <p className="max-w-sm text-base leading-[1.8] text-text">Vous pouvez commencer sans avoir choisi de formule ni réuni tous vos documents.</p>
             </div>
-            <div className="mt-10 grid gap-6 lg:mt-12 lg:grid-cols-3">
-              {options.map((option, index) => (
-                <Link key={option.href} href={option.href} className={`group flex flex-col overflow-hidden rounded-3xl shadow-sm transition-shadow hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary motion-reduce:transition-none ${option.image ? "bg-white ring-1 ring-border/50" : "bg-secondary text-white"}`}>
-                  <div className="relative aspect-[8/5] overflow-hidden">
-                    {option.image ? <Image src={option.image} alt="" fill sizes="(min-width: 1280px) 384px, (min-width: 1024px) calc((100vw - 128px) / 3), calc(100vw - 48px)" className="object-cover" /> : <div className="absolute inset-x-14 bottom-4 top-14 text-white/80"><FormulaIllustration kind="term" className="h-full w-full" /></div>}
-                    <span className={`absolute left-5 top-5 rounded-full px-4 py-2 text-xs font-semibold ${option.image ? "bg-white text-secondary" : "border border-white/60 text-white"}`}>0{index + 1} — {option.situation}</span>
-                  </div>
-                  <div className="flex flex-1 flex-col p-6 sm:p-7">
-                    <h3 className={`text-2xl font-bold tracking-tight ${option.image ? "text-secondary" : "text-white"}`}>{option.title}</h3>
-                    <p className={`mt-3 flex-1 text-base leading-relaxed ${option.image ? "text-text" : "text-white/75"}`}>{option.description}</p>
-                    <span className={`mt-7 inline-flex min-h-14 items-center justify-center gap-3 rounded-xl px-4 py-3 text-center text-sm font-semibold transition-colors ${option.image ? "border border-secondary text-secondary group-hover:bg-secondary group-hover:text-white" : "bg-primary text-white group-hover:bg-primary-dark"}`}>
-                      {option.label}<Icon name="arrowRight" className="h-5 w-5 shrink-0" />
-                    </span>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section aria-labelledby="seller-steps-heading" className="bg-[#0b3545] py-16 text-white lg:py-20">
-          <div className="mx-auto max-w-7xl px-6 lg:px-10">
-            <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-wide text-primary sm:text-sm"><span aria-hidden="true" className="h-0.5 w-8 bg-primary" />Les étapes de la vente</p>
-            <h2 id="seller-steps-heading" className="mt-4 max-w-3xl text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-5xl">Une décision préparée,<br />puis un contrat précis.</h2>
-            <ol className="mt-10 divide-y divide-white/25">
+            <ol className="mt-10 grid gap-8 lg:mt-12 lg:grid-cols-3 lg:gap-10">
               {steps.map((step, index) => (
-                <li key={step.title} className="grid gap-5 py-7 sm:grid-cols-[100px_1fr] lg:grid-cols-[120px_1fr_1.3fr] lg:items-center lg:gap-9 lg:py-9">
-                  <span aria-hidden="true" className="select-none text-6xl font-bold leading-none tracking-tight text-transparent lg:text-7xl" style={{ WebkitTextStroke: "1px #8db1c3" }}>0{index + 1}</span>
-                  <div className="flex items-center gap-4"><Icon name={step.icon} className="h-8 w-8 shrink-0 text-primary" /><h3 className="text-xl font-bold tracking-tight sm:text-2xl">{step.title}</h3></div>
-                  <p className="text-base leading-relaxed text-white/75 sm:col-start-2 lg:col-start-auto lg:border-l lg:border-white/25 lg:pl-9">{step.description}</p>
+                <li key={step.title} className="relative border-t border-secondary/20 pt-7">
+                  <span aria-hidden="true" className="absolute -top-1 left-0 h-2 w-2 rounded-full bg-primary" />
+                  <span className="text-xs font-medium text-text">0{index + 1}</span>
+                  <h3 className="mt-3 max-w-xs text-xl font-semibold leading-snug text-secondary">{step.title}</h3>
+                  <p className="mt-4 text-sm leading-[1.8] text-text">{step.description}</p>
+                  <p className="mt-5 text-xs text-secondary">{step.note}</p>
                 </li>
               ))}
             </ol>
-            <p className="mt-7 max-w-4xl border-t border-white/25 pt-7 text-sm leading-relaxed text-white/65">
-              Le bouquet est facultatif et librement fixé. La rente reste
-              liée à la durée de vie du ou des bénéficiaires ; il faut donc
-              comprendre l&apos;aléa et les garanties. Les{" "}
-              <a href="https://paris.notaires.fr/fr/actualites/le-mot-du-mois-le-bouquet" className="font-semibold text-primary underline underline-offset-4">Notaires du Grand Paris expliquent le bouquet</a>{" "}
-              et les{" "}
-              <a href="https://paris.notaires.fr/fr/actualites/la-vente-en-viager-une-source-de-revenus-manier-avec-precaution" className="font-semibold text-primary underline underline-offset-4">précautions à prendre avant une vente</a>.
-            </p>
           </div>
         </section>
 
-        <section aria-labelledby="seller-documents-heading" className="bg-white py-16 lg:py-20">
-          <div className="mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-2 lg:items-center lg:gap-14 lg:px-10">
-            <div className="overflow-hidden rounded-3xl bg-secondary">
-              <div className="relative aspect-[6/5]"><Image src="/images/agency-montpellier.webp" alt="" fill sizes="(min-width: 1280px) 576px, (min-width: 1024px) calc((100vw - 136px) / 2), calc(100vw - 48px)" className="object-cover" /></div>
-              <div className="flex items-center gap-4 px-6 py-6 sm:px-8"><Icon name="key" className="h-9 w-9 shrink-0 text-primary" /><p className="text-lg font-semibold leading-snug text-white sm:text-xl">Votre vente se prépare<br />à votre rythme.</p></div>
+        <section id="seller-faq" aria-labelledby="seller-faq-heading" className="bg-white py-16 lg:py-24">
+          <div className={`${container} grid gap-10 lg:grid-cols-[0.8fr_1.25fr] lg:gap-20`}>
+            <div>
+              <p className={eyebrow}><span className="mr-3 text-primary">04</span>Prendre le temps de décider</p>
+              <h2 id="seller-faq-heading" className={`mt-5 ${heading}`}>Vos questions<br />avant de vendre.</h2>
+              <p className="mt-5 max-w-sm text-base leading-[1.8] text-text">Occupation, revenus, charges, protection de vos proches : les réponses doivent correspondre à votre situation.</p>
+              <SectionButton sectionId="projet-vendeur" className="mt-7 inline-flex min-h-12 items-center justify-center gap-3 rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-white hover:bg-primary-dark focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">Parler de ma situation<Icon name="arrowRight" className="h-4 w-4" /></SectionButton>
+              <a href={`tel:${agency.telephone}`} className="mt-5 flex w-fit items-center gap-2 rounded-sm text-sm font-medium text-secondary hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"><Icon name="phone" className="h-4 w-4 text-primary" />{agency.telephoneDisplay}</a>
             </div>
             <div>
-              <p className="text-xs font-semibold uppercase tracking-wide text-primary sm:text-sm">Votre dossier</p>
-              <h2 id="seller-documents-heading" className="mt-4 text-3xl font-bold leading-tight tracking-tight text-secondary sm:text-4xl lg:text-5xl">Les informations<br />à rassembler.</h2>
-              <ul className="mt-7 grid gap-x-7 sm:grid-cols-2">
-                {documents.map((document, index) => (
-                  <li key={document.title} className="border-t border-border py-5"><span className="text-xs font-semibold text-primary">0{index + 1}</span><h3 className="mt-2 text-lg font-bold tracking-tight text-secondary">{document.title}</h3><p className="mt-2 text-sm leading-relaxed text-text">{document.description}</p></li>
+              <div className="border-t border-border">
+                {faqs.map(item => (
+                  <details key={item.question} name="seller-questions" className="group border-b border-border">
+                    <summary className="flex cursor-pointer list-none items-center justify-between gap-5 py-6 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary [&::-webkit-details-marker]:hidden">
+                      <h3 className="text-base font-medium leading-relaxed text-secondary sm:text-lg">{item.question}</h3>
+                      <span aria-hidden="true" className="relative h-5 w-5 shrink-0 text-primary"><span className="absolute inset-x-0 top-1/2 h-px bg-current" /><span className="absolute inset-y-0 left-1/2 w-px bg-current group-open:hidden" /></span>
+                    </summary>
+                    <p className="max-w-xl pb-6 pr-6 text-sm leading-[1.9] text-text sm:text-base">{item.answer}</p>
+                  </details>
                 ))}
-              </ul>
-              <p className="mt-6 text-sm leading-relaxed text-text">
-                La liste dépend de la situation du logement. Consultez les règles de{" "}
-                <a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F10798" className="font-semibold text-primary underline underline-offset-4">Service Public sur les diagnostics de vente</a>{" "}
-                et la{" "}
-                <a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F2604" className="font-semibold text-primary underline underline-offset-4">vente d&apos;un logement en copropriété</a>.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section aria-labelledby="seller-notary-heading" className="bg-[#f7f7f5] py-16 lg:py-20">
-          <div className="mx-auto grid max-w-7xl gap-8 px-6 lg:grid-cols-[1fr_1.1fr] lg:gap-16 lg:px-10">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-wide text-primary sm:text-sm">Un projet qui vous ressemble</p>
-              <h2 id="seller-notary-heading" className="mt-4 text-3xl font-bold leading-tight tracking-tight text-secondary sm:text-4xl lg:text-5xl">En parler avec vos proches et votre notaire.</h2>
-              <Link href="/estimation-viager-montpellier" className={`mt-7 ${buttonClass}`}>Faire estimer mon bien<Icon name="arrowRight" className="h-5 w-5 shrink-0" /></Link>
-            </div>
-            <div className="border-t border-border pt-7 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0">
-              <p className="text-base leading-relaxed text-text sm:text-lg">
-                Une vente modifie votre patrimoine. Si vous le souhaitez,
-                associez vos proches aux échanges et exposez vos priorités
-                au notaire : protection du conjoint, droit d&apos;occupation,
-                départ du logement et conséquences successorales.
-              </p>
-              <p className="mt-5 text-base leading-relaxed text-text sm:text-lg">
-                Demandez également une explication écrite des paiements,
-                de leur éventuelle indexation, des charges et des recours
-                en cas d&apos;impayés. Les dispositions retenues doivent
-                correspondre à votre situation, au-delà du seul montant
-                annoncé de la rente.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <Faq id="seller-faq" accordionName="seller-faq" title={<>Questions avant<br />de vendre<br />en viager<span className="text-primary">.</span></>} description="Quelques repères pour préparer votre vente. Votre situation mérite un échange personnalisé avec notre équipe." items={faqs} />
-        <section aria-labelledby="seller-contact-heading" className="bg-[#0b3545] py-16 lg:py-20">
-          <div className="mx-auto grid max-w-7xl gap-8 px-6 lg:grid-cols-[1.15fr_1fr] lg:items-center lg:gap-16 lg:px-10">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-wide text-primary sm:text-sm">Un premier échange</p>
-              <h2 id="seller-contact-heading" className="mt-4 text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">Préparons votre<br />projet de vente<span className="text-primary">.</span></h2>
-            </div>
-            <div>
-              <p className="max-w-xl text-base leading-relaxed text-white/75 sm:text-lg">Vous pouvez nous contacter avant d&apos;avoir choisi votre formule. Nous commencerons par votre logement, votre souhait d&apos;occupation et les questions auxquelles vous souhaitez répondre.</p>
-              <div className="mt-7 flex flex-wrap items-center gap-5">
-                <SectionButton sectionId="projet-vendeur" className={buttonClass}>Être rappelé par un conseiller<Icon name="arrowRight" className="h-5 w-5 shrink-0" /></SectionButton>
-                <a href={`tel:${agency.telephone}`} className="inline-flex items-center gap-2 rounded-sm text-lg font-semibold text-white hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"><Icon name="phone" className="h-5 w-5 text-primary" />{agency.telephoneDisplay}</a>
               </div>
+              <p className="mt-6 text-xs leading-[1.8] text-text">Repères officiels : <a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F2762" className="rounded-sm underline underline-offset-4 hover:text-secondary">la vente en viager</a> et <a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F934" className="rounded-sm underline underline-offset-4 hover:text-secondary">l&apos;usufruit</a> sur Service Public.</p>
             </div>
           </div>
         </section>

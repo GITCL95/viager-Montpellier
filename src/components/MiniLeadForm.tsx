@@ -30,10 +30,10 @@ export function MiniLeadForm({
   const isHero = appearance === "hero" && context === "callback" && !isWide;
   const HeadingTag = isHero ? "h2" : "h3";
   const cardInputClass = isHero
-    ? "min-h-[54px] min-w-0 w-full rounded-xl border border-border bg-white px-4 py-3 text-base text-secondary placeholder:text-muted focus:border-primary focus:outline-2 focus:outline-offset-2 focus:outline-primary"
+    ? "min-h-12 min-w-0 w-full rounded-xl border border-border bg-white px-4 py-2.5 text-base text-secondary placeholder:text-muted focus:border-primary focus:outline-2 focus:outline-offset-2 focus:outline-primary"
     : "rounded-xl border border-border bg-white px-4 py-3 text-sm text-secondary placeholder:text-muted focus:border-primary focus:outline-none";
   const cardLabelClass = isHero
-    ? "grid min-w-0 gap-2 text-sm font-medium text-secondary"
+    ? "grid min-w-0 gap-1.5 text-xs font-medium text-secondary"
     : "grid gap-1.5 text-sm font-medium text-secondary";
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -68,7 +68,7 @@ export function MiniLeadForm({
         role="status"
         className={
           isHero
-            ? "rounded-3xl bg-white p-6 shadow-[0_20px_60px_-25px_rgba(3,26,37,0.5)] sm:p-8"
+            ? "rounded-2xl border border-border bg-white p-6 sm:p-7"
             : isWide
               ? "rounded-3xl bg-white p-6 sm:p-8"
               : "rounded-3xl bg-bg-gray p-6 ring-1 ring-border sm:p-7"
@@ -169,7 +169,7 @@ export function MiniLeadForm({
       onSubmit={handleSubmit}
       className={
         isHero
-          ? "rounded-3xl bg-white p-6 shadow-[0_20px_60px_-25px_rgba(3,26,37,0.5)] sm:p-8"
+          ? "rounded-2xl border border-border bg-white p-6 sm:p-7"
           : "rounded-3xl bg-bg-gray p-6 ring-1 ring-border sm:p-7"
       }
     >
@@ -179,7 +179,7 @@ export function MiniLeadForm({
       <HeadingTag
         className={
           isHero
-            ? "text-[28px] font-bold leading-[1.2] tracking-tight text-secondary"
+            ? "text-2xl font-bold leading-[1.2] tracking-tight text-secondary"
             : "text-base font-bold text-secondary"
         }
       >
@@ -189,7 +189,7 @@ export function MiniLeadForm({
         {description}
       </p>
 
-      <div className={isHero ? "mt-6 grid gap-4" : "mt-5 grid gap-3"}>
+      <div className="mt-5 grid gap-3">
         <label className={cardLabelClass}>
           Votre nom
           <input
@@ -273,7 +273,7 @@ export function MiniLeadForm({
         disabled={status === "loading"}
         className={
           isHero
-            ? "mt-6 inline-flex min-h-[54px] w-full items-center justify-center gap-3 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary-dark focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary disabled:cursor-not-allowed disabled:opacity-70 motion-reduce:transition-none"
+            ? "mt-5 inline-flex min-h-12 w-full items-center justify-center gap-3 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary-dark focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary disabled:cursor-not-allowed disabled:opacity-70 motion-reduce:transition-none"
             : "mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary-dark disabled:cursor-not-allowed disabled:opacity-70"
         }
       >
@@ -282,16 +282,22 @@ export function MiniLeadForm({
       </button>
 
       {isHero && (
-        <span className="mx-auto mt-4 flex w-fit max-w-full items-center justify-center gap-2 rounded-full bg-primary/[0.06] px-3 py-2 text-center text-[11px] font-medium leading-relaxed text-text">
-          <Icon name="clock" className="h-4 w-4 shrink-0 text-primary" />
+        <span className="mt-3 flex items-center gap-2 text-xs leading-relaxed text-text">
+          <Icon name="clock" className="h-3.5 w-3.5 shrink-0" />
           <span className="min-w-0">Sous 48 h ouvrées · Sans engagement</span>
         </span>
       )}
 
-      <p className={isHero ? "mt-4 text-[11px] leading-relaxed text-text" : "mt-3 text-[11px] leading-relaxed text-muted"}>
-        Vos informations servent à traiter votre demande et à vous recontacter.
-        L&apos;envoi est assuré par Formspree. Réponse sous 48 h ouvrées,
-        sans engagement.
+      <p className={isHero ? "mt-3 text-[11px] leading-relaxed text-text" : "mt-3 text-[11px] leading-relaxed text-muted"}>
+        {isHero ? (
+          "Vos coordonnées servent uniquement à vous recontacter."
+        ) : (
+          <>
+            Vos informations servent à traiter votre demande et à vous recontacter.
+            L&apos;envoi est assuré par Formspree. Réponse sous 48 h ouvrées,
+            sans engagement.
+          </>
+        )}
       </p>
     </form>
   );
